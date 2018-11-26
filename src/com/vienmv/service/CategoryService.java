@@ -2,6 +2,7 @@ package com.vienmv.service;
 
 import java.util.List;
 
+
 import com.vienmv.model.Category;
 
 public interface CategoryService {
@@ -12,6 +13,8 @@ public interface CategoryService {
 	void delete(int id);
 
 	Category get(int id);
+	
+	Category get(String name);
 
 	List<Category> getAll();
 
