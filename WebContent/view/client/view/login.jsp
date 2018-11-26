@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:url value="/view/client/static" var="url"></c:url>
 <meta charset="UTF-8">
 <title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,36 +18,36 @@
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/shop.style.css">
+    <link rel="stylesheet" href="${url}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${url}/css/shop.style.css">
     
     <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/headers/header-v5.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/footers/footer-v4.css">
+    <link rel="stylesheet" href="${url}/css/headers/header-v5.css">
+    <link rel="stylesheet" href="${url}/css/footers/footer-v4.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/animate.css">    
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/line-icons/line-icons.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="${url}/plugins/animate.css">    
+    <link rel="stylesheet" href="${url}/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="${url}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${url}/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/pages/log-reg-v3.css">
+    <link rel="stylesheet" href="${url}/css/pages/log-reg-v3.css">
 
     <!-- Style Switcher -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/plugins/style-switcher.css">
+    <link rel="stylesheet" href="${url}/css/plugins/style-switcher.css">
 
     <!-- CSS Theme -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/theme-colors/default.css" id="style_color">
+    <link rel="stylesheet" href="${url}/css/theme-colors/default.css" id="style_color">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/custom.css">
+    <link rel="stylesheet" href="${url}/css/custom.css">
 </head>
 <body>
 <body class="header-fixed">
 <div class="wrapper">
     <!--=== Header v5 ===-->   
-    <div class="header-v5 header-http://localhost:8080/Shop/static">
+    <div class="header-v5 header-${url}">
         <!-- Topbar v3 -->
         <jsp:include page="topbar.jsp"></jsp:include>
         
@@ -184,21 +185,21 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->           
-<script src="http://localhost:8080/Shop/static/plugins/jquery/jquery.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/jquery/jquery-migrate.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${url}/plugins/jquery/jquery.min.js"></script>
+<script src="${url}/plugins/jquery/jquery-migrate.min.js"></script>
+<script src="${url}/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- JS Implementing Plugins -->
-<script src="http://localhost:8080/Shop/static/plugins/back-to-top.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/smoothScroll.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="${url}/plugins/back-to-top.js"></script>
+<script src="${url}/plugins/smoothScroll.js"></script>
+<script src="${url}/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
+<script src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
 <!-- JS Customization -->
-<script src="http://localhost:8080/Shop/static/js/custom.js"></script>
+<script src="${url}/js/custom.js"></script>
 <!-- JS Page Level -->
-<script src="http://localhost:8080/Shop/static/js/shop.app.js"></script>
-<script src="http://localhost:8080/Shop/static/js/forms/page_login.js"></script>
-<script src="http://localhost:8080/Shop/static/js/forms/page_contact_form.js"></script>
+<script src="${url}/js/shop.app.js"></script>
+<script src="${url}/js/forms/page_login.js"></script>
+<script src="${url}/js/forms/page_contact_form.js"></script>
 <script>
     jQuery(document).ready(function() {
         App.init();
@@ -208,13 +209,13 @@
     });
 </script>
 <!--[if lt IE 9]>
-    <script src="http://localhost:8080/Shop/static/plugins/respond.js"></script>
-    <script src="http://localhost:8080/Shop/static/plugins/html5shiv.js"></script>
-    <script src="http://localhost:8080/Shop/static/js/plugins/placeholder-IE-fixes.js"></script>    
-    <script src="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js"></script>
+    <script src="${url}/plugins/respond.js"></script>
+    <script src="${url}/plugins/html5shiv.js"></script>
+    <script src="${url}/js/plugins/placeholder-IE-fixes.js"></script>    
+    <script src="${url}/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js"></script>
 <![endif]-->
 <!--[if lt IE 10]>
-    <script src="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js"></script>
+    <script src="${url}/plugins/sky-forms-pro/skyforms/js/jquery.placeholder.min.js"></script>
 <![endif]-->
 
 </body>

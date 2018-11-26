@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:url value="/view/client/static" var="url"></c:url>
 <meta charset="ISO-8859-1">
 <title>Product Details </title>
 <!-- Favicon -->
@@ -13,32 +14,32 @@
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/shop.style.css">
+    <link rel="stylesheet" href="${url}/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${url}/css/shop.style.css">
     
     <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/headers/header-v5.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/footers/footer-v4.css">
+    <link rel="stylesheet" href="${url}/css/headers/header-v5.css">
+    <link rel="stylesheet" href="${url}/css/footers/footer-v4.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/animate.css">    
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/line-icons/line-icons.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/owl-carousel/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/plugins/master-slider/quick-start/masterslider/style/masterslider.css">
-    <link rel='stylesheet' href="http://localhost:8080/Shop/static/plugins/master-slider/quick-start/masterslider/skins/default/style.css">
+    <link rel="stylesheet" href="${url}/plugins/animate.css">    
+    <link rel="stylesheet" href="${url}/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="${url}/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${url}/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="${url}/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="${url}/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
+    <link rel="stylesheet" href="${url}/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
+    <link rel="stylesheet" href="${url}/plugins/master-slider/quick-start/masterslider/style/masterslider.css">
+    <link rel='stylesheet' href="${url}/plugins/master-slider/quick-start/masterslider/skins/default/style.css">
 
     <!-- Style Switcher -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/plugins/style-switcher.css">
+    <link rel="stylesheet" href="${url}/css/plugins/style-switcher.css">
 
     <!-- CSS Theme -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/theme-colors/default.css" id="style_color">
+    <link rel="stylesheet" href="${url}/css/theme-colors/default.css" id="style_color">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="http://localhost:8080/Shop/static/css/custom.css">
+    <link rel="stylesheet" href="${url}/css/custom.css">
 </head>
 <body>
 
@@ -75,16 +76,16 @@
                         <!-- Master Slider -->
                         <div class="master-slider ms-skin-default" id="masterslider">
                             <div class="ms-slide">
-                                <img class="ms-brd" src="http://localhost:8080/Shop/static/img/blank.gif" data-src="http://localhost:8080/Shop/static/img/blog/28.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="http://localhost:8080/Shop/static/img/blog/28-thumb.jpg" alt="thumb">
+                                <img class="ms-brd" src="${url}/img/blank.gif" data-src="${url}/img/blog/28.jpg" alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" src="${url}/img/blog/28-thumb.jpg" alt="thumb">
                             </div>
                             <div class="ms-slide">
-                                <img src="http://localhost:8080/Shop/static/img/blank.gif" data-src="http://localhost:8080/Shop/static/img/blog/29.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="http://localhost:8080/Shop/static/img/blog/29-thumb.jpg" alt="thumb">
+                                <img src="${url}/img/blank.gif" data-src="${url}/img/blog/29.jpg" alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" src="${url}/img/blog/29-thumb.jpg" alt="thumb">
                             </div>
                             <div class="ms-slide">
-                                <img src="http://localhost:8080/Shop/static/img/blank.gif" data-src="http://localhost:8080/Shop/static/img/blog/30.jpg" alt="lorem ipsum dolor sit">
-                                <img class="ms-thumb" src="http://localhost:8080/Shop/static/img/blog/30-thumb.jpg" alt="thumb">
+                                <img src="${url}/img/blank.gif" data-src="${url}/img/blog/30.jpg" alt="lorem ipsum dolor sit">
+                                <img class="ms-thumb" src="${url}/img/blog/30-thumb.jpg" alt="thumb">
                             </div>
                         </div>
                         <!-- End Master Slider -->
@@ -271,7 +272,7 @@
                 <div class="tab-pane fade" id="reviews">
                     <div class="product-comment margin-bottom-40">
                         <div class="product-comment-in">
-                            <img class="product-comment-img rounded-x" src="http://localhost:8080/Shop/static/img/team/01.jpg" alt="">
+                            <img class="product-comment-img rounded-x" src="${url}/img/team/01.jpg" alt="">
                             <div class="product-comment-dtl">
                                 <h4>Mickel <small>22 days ago</small></h4>
                                 <p>I like the green colour, it's very likeable and reminds me of Hollister. A little loose though but I am very skinny</p>
@@ -291,7 +292,7 @@
                         </div>    
                     </div>
                     <h3 class="heading-md margin-bottom-30">Add a review</h3>
-                    <form action="http://localhost:8080/Shop/static/php/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form sky-changes-4">
+                    <form action="${url}/php/demo-contacts-process.php" method="post" id="sky-form3" class="sky-form sky-changes-4">
                         <fieldset>
                             <div class="margin-bottom-30">
                                 <label class="label-v2">Name</label>
@@ -354,7 +355,7 @@
 
             <ul class="list-inline owl-slider-v4">
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/09.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/09.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -370,7 +371,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/07.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/07.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -387,7 +388,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/08.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/08.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -403,7 +404,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/06.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/06.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -419,7 +420,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/04.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/04.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -435,7 +436,7 @@
                     </div>
                 </li>
                 <li class="item">
-                    <a href="#"><img class="img-responsive" src="http://localhost:8080/Shop/static/img/thumb/03.jpg" alt=""></a>
+                    <a href="#"><img class="img-responsive" src="${url}/img/thumb/03.jpg" alt=""></a>
                     <div class="product-description-v2">
                         <div class="margin-bottom-5">
                             <h4 class="title-price"><a href="#">Double-breasted</a></h4>
@@ -481,24 +482,24 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->           
-<script src="http://localhost:8080/Shop/static/plugins/jquery/jquery.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/jquery/jquery-migrate.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${url}/plugins/jquery/jquery.min.js"></script>
+<script src="${url}/plugins/jquery/jquery-migrate.min.js"></script>
+<script src="${url}/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- JS Implementing Plugins -->
-<script src="http://localhost:8080/Shop/static/plugins/back-to-top.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/smoothScroll.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="${url}/plugins/back-to-top.js"></script>
+<script src="${url}/plugins/smoothScroll.js"></script>
+<script src="${url}/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<script src="${url}/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- Master Slider -->
-<script src="http://localhost:8080/Shop/static/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>
-<script src="http://localhost:8080/Shop/static/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>
+<script src="${url}/plugins/master-slider/quick-start/masterslider/masterslider.min.js"></script>
+<script src="${url}/plugins/master-slider/quick-start/masterslider/jquery.easing.min.js"></script>
 <!-- JS Customization -->
-<script src="http://localhost:8080/Shop/static/js/custom.js"></script>
+<script src="${url}/js/custom.js"></script>
 <!-- JS Page Level -->
-<script src="http://localhost:8080/Shop/static/js/shop.app.js"></script>
-<script src="http://localhost:8080/Shop/static/js/plugins/owl-carousel.js"></script>
-<script src="http://localhost:8080/Shop/static/js/plugins/master-slider.js"></script>
-<script src="http://localhost:8080/Shop/static/js/forms/product-quantity.js"></script>
+<script src="${url}/js/shop.app.js"></script>
+<script src="${url}/js/plugins/owl-carousel.js"></script>
+<script src="${url}/js/plugins/master-slider.js"></script>
+<script src="${url}/js/forms/product-quantity.js"></script>
 <script>
     jQuery(document).ready(function() {
         App.init();
@@ -509,9 +510,9 @@
 </script>
 
 <!--[if lt IE 9]>
-    <script src="http://localhost:8080/Shop/static/plugins/respond.js"></script>
-    <script src="http://localhost:8080/Shop/static/plugins/html5shiv.js"></script>
-    <script src="http://localhost:8080/Shop/static/js/plugins/placeholder-IE-fixes.js"></script>    
+    <script src="${url}/plugins/respond.js"></script>
+    <script src="${url}/plugins/html5shiv.js"></script>
+    <script src="${url}/js/plugins/placeholder-IE-fixes.js"></script>    
 <![endif]-->
 
 </body>

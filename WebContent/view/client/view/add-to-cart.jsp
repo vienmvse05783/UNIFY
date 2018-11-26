@@ -8,7 +8,7 @@
 <title>Add to Cart</title>
 <!-- Favicon -->
 <link rel="shortcut icon" href="favicon.ico">
-<c:url value="view/client/static">url</c:url>
+<c:url value="/view/client/static" var="url"></c:url>
 
 <!-- Web Fonts -->
 <link rel='stylesheet' type='text/css'

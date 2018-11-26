@@ -1,6 +1,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      <c:url value="/view/client/static" var="url"></c:url>
  <div class="navbar navbar-default mega-menu" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -12,59 +13,14 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="./">
-                        <img id="logo-header" src="http://localhost:8080/Shop/static/img/logo.png" alt="Logo">
+                        <img id="logo-header" src="${url}/img/logo.png" alt="Logo">
                     </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-responsive-collapse">
                     <!-- Shopping Cart -->
-                    <ul class="list-inline shop-badge badge-lists badge-icons pull-right">
-                        <li>
-                            <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                            <span class="badge badge-sea rounded-x">3</span>
-                            <ul class="list-unstyled badge-open mCustomScrollbar" data-mcs-theme="minimal-dark">
-                                <li>
-                                    <img src="http://localhost:8080/Shop/static/img/thumb/05.jpg" alt="">
-                                    <button type="button" class="close">×</button>
-                                    <div class="overflow-h">
-                                        <span>Black Glasses</span>
-                                        <small>1 x $400.00</small>
-                                    </div>    
-                                </li>
-                                <li>
-                                    <img src="http://localhost:8080/Shop/static/img/thumb/02.jpg" alt="">
-                                    <button type="button" class="close">×</button>
-                                    <div class="overflow-h">
-                                        <span>Black Glasses</span>
-                                        <small>1 x $400.00</small>
-                                    </div>    
-                                </li>
-                                <li>
-                                    <img src="http://localhost:8080/Shop/static/img/thumb/03.jpg" alt="">
-                                    <button type="button" class="close">×</button>
-                                    <div class="overflow-h">
-                                        <span>Black Glasses</span>
-                                        <small>1 x $400.00</small>
-                                    </div>    
-                                </li>
-                                <li class="subtotal">
-                                    <div class="overflow-h margin-bottom-10">
-                                        <span>Subtotal</span>
-                                        <span class="pull-right subtotal-cost">$1200.00</span>
-                                    </div>
-                                    <div class="row">    
-                                        <div class="col-xs-6">
-                                            <a href="shop-ui-inner.html" class="btn-u btn-brd btn-brd-hover btn-u-sea-shop btn-block">View Cart</a>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a href="shop-ui-add-to-cart.html" class="btn-u btn-u-sea-shop btn-block">Checkout</a>
-                                        </div>
-                                    </div>        
-                                </li>    
-                            </ul>
-                        </li>
-                    </ul>
+                   <jsp:include page="/view/client/view/cart.jsp"></jsp:include>
                     <!-- End Shopping Cart -->
 
                     <!-- Nav Menu -->
@@ -127,13 +83,13 @@
                                                     <button type="button" class="btn-u btn-u-dark">Read More</button>
                                                 </div>
                                                 <div class="col-md-3 col-sm-4 col-xs-4 md-margin-bottom-30">
-                                                    <a href="#"><img class="product-offers img-responsive" src="http://localhost:8080/Shop/static/img/blog/01.jpg" alt=""></a>
+                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/01.jpg" alt=""></a>
                                                 </div>
                                                 <div class="col-md-3 col-sm-4 col-xs-4 sm-margin-bottom-30">
-                                                    <a href="#"><img class="product-offers img-responsive" src="http://localhost:8080/Shop/static/img/blog/02.jpg" alt=""></a>
+                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/02.jpg" alt=""></a>
                                                 </div>
                                                 <div class="col-md-3 col-sm-4 col-xs-4">
-                                                    <a href="#"><img class="product-offers img-responsive" src="http://localhost:8080/Shop/static/img/blog/03.jpg" alt=""></a>
+                                                    <a href="#"><img class="product-offers img-responsive" src="${url}/img/blog/03.jpg" alt=""></a>
                                                 </div>
                                             </div><!--/end row-->
                                         </div><!--/end container-->

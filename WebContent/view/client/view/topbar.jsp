@@ -1,6 +1,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <c:url value="/view/client/static" var="url"></c:url>
         <div class="topbar-v3">
             <div class="search-open">
                 <div class="container">
