@@ -16,8 +16,15 @@ public interface UserService {
 	User get(int id);
 	
 	User login(String username, String password);
+	
+	boolean register(String username, String password, String name);
 
 	List<User> getAll();
 
 	List<User> search(String keyword);
+	
+	boolean checkExistEmail(String email);
+	
+	boolean checkExistUsername(String username);
+	
 }

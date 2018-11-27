@@ -183,5 +183,50 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 		return userList;
 	}
+	public boolean checkExistEmail(String email){
+        boolean duplicate = false;
+        Connection conn = JDBCConnection.getJDBCConnection();
+        try {  
+            String query = "select * from [user] where email = ?";
+
+            PreparedStatement psmt = conn.prepareStatement(query);
+
+            psmt.setString(1, email);
+
+            ResultSet resultSet = psmt.executeQuery();
+
+
+            if(resultSet.next()){
+               duplicate = true;
+            }
+            psmt.close();
+            conn.close();
+        } catch (SQLException ex) {
+    }
+    return duplicate;
+}
+
+public boolean checkExistUsername(String username){
+    boolean duplicate = false;
+    Connection conn = JDBCConnection.getJDBCConnection();
+    try {  
+        String query = "select * from [user] where username = ?";
+
+        PreparedStatement psmt = conn.prepareStatement(query);
+
+        psmt.setString(1, username);
+
+        ResultSet resultSet = psmt.executeQuery();
+
+
+        if(resultSet.next()){
+           duplicate = true;
+        }
+        psmt.close();
+        conn.close();
+    } catch (SQLException ex) {
+    }
+ return duplicate;
+}
 
 }
