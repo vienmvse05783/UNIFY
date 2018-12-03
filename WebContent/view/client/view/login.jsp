@@ -152,7 +152,7 @@
                     </form>
                     
                     <div class="margin-bottom-20"></div>
-                    <p class="text-center">Don't have account yet? Learn more and <a href="shop-ui-register.html">Sign Up</a></p>
+                    <p class="text-center">Don't have account yet? Learn more and <a href="${pageContext.request.contextPath }/register">Sign Up</a></p>
                 </div>
             </div><!--/end row-->
         </div><!--/end container-->

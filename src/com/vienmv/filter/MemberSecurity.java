@@ -9,18 +9,18 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;import com.sun.corba.se.impl.ior.GenericTaggedComponent;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+
 import com.vienmv.model.User;
-@WebFilter(urlPatterns= {"/admin/*"})
-public class SecurityFilter implements Filter {
+@WebFilter(urlPatterns="/")
+public class MemberSecurity implements Filter {
 
 	@Override
 	public void destroy() {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -36,15 +36,15 @@ public class SecurityFilter implements Filter {
 			chain.doFilter(request, response);
 			return; //
 		}else {
-			resq.sendRedirect("/login");
+			resq.sendRedirect("/dang-nhap");
 		}
+		
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+		// TODO Auto-generated method stub
 		
 	}
-	
 
 }

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
       <c:url value="/view/client/static" var="url"></c:url>
+      
  <div class="navbar navbar-default mega-menu" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,8 +37,8 @@
                                 <li><a href="shop-ui-filter-grid.html">Filter Grid Page</a></li>
                                 <li><a href="shop-ui-filter-list.html">Filter List Page</a></li>
                                 <li><a href="shop-ui-add-to-cart.html">Checkout</a></li>
-                                <li><a href="/login">Login</a></li>
-                                <li class="active"><a href="/register">Register</a></li>
+                                <li><a href="${pageContext.request.contextPath }/login">Login</a></li>
+                                <li class="active"><a href="${pageContext.request.contextPath }/register">Register</a></li>
                             </ul>
                         </li>
                         <!-- End Pages -->

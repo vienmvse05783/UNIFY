@@ -1,20 +1,12 @@
 use master
 go
 drop database UNIFY
-
 use master
 go
-
 create database UNIFY
-
 go
-
 use UNIFY
-
 go
-
-
-
 create table [User](
 	id int identity,
 	[name] varchar(50),
@@ -23,15 +15,10 @@ create table [User](
 	avatar varchar(50),
 	primary key(id)
 )
-
-
-
 create table Category(
 	cate_id int identity primary key,
 	cate_name nvarchar(255) not null,
 )
-
-
 create table Product(
 	id int identity primary key,
 	[name] nvarchar(255) not null,
@@ -55,4 +42,16 @@ create table Order_Detail(
 	total numeric(12,2) not null,
 	primary key (order_id,pro_id)
 )
+create table CartItem(
+	id int,
+	quantity int,
+	unitPrice float,
+	pro_id int references product(pro_id),
+	cat_id int
 
+)
+create table Cart(
+	id int,
+	u_id int,
+	buyDate date
+)

@@ -7,11 +7,11 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="index.html">Dashboard</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath }/admin">Dashboard</a>
 	</div>
 	<div
 		style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-		Welcome ${username.name } &nbsp; <a href="./logout"
+		Welcome ${username.name } &nbsp; <a href="${pageContext.request.contextPath }/logout"
 			class="btn btn-danger square-btn-adjust">Logout</a>
 	</div>
 </nav>

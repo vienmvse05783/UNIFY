@@ -1,4 +1,4 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,20 +17,15 @@
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet"
 	href="${url}/plugins/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${url}/css/shop.style.css">
+<link rel="stylesheet" href="${url}/css/shop.style.css">
 
 <!-- CSS Header and Footer -->
-<link rel="stylesheet"
-	href="${url}/css/headers/header-v5.css">
-<link rel="stylesheet"
-	href="${url}/css/footers/footer-v4.css">
+<link rel="stylesheet" href="${url}/css/headers/header-v5.css">
+<link rel="stylesheet" href="${url}/css/footers/footer-v4.css">
 
 <!-- CSS Implementing Plugins -->
-<link rel="stylesheet"
-	href="${url}/plugins/animate.css">
-<link rel="stylesheet"
-	href="${url}/plugins/line-icons/line-icons.css">
+<link rel="stylesheet" href="${url}/plugins/animate.css">
+<link rel="stylesheet" href="${url}/plugins/line-icons/line-icons.css">
 <link rel="stylesheet"
 	href="${url}/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet"
@@ -39,21 +34,17 @@
 <!-- <link rel="stylesheet" href="${url}/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css"> -->
 
 <!-- CSS Page Styles -->
-<link rel="stylesheet"
-	href="${url}/css/pages/log-reg-v3.css">
+<link rel="stylesheet" href="${url}/css/pages/log-reg-v3.css">
 
 <!-- Style Switcher -->
-<link rel="stylesheet"
-	href="${url}/css/plugins/style-switcher.css">
+<link rel="stylesheet" href="${url}/css/plugins/style-switcher.css">
 
 <!-- CSS Theme -->
-<link rel="stylesheet"
-	href="${url}/css/theme-colors/default.css"
+<link rel="stylesheet" href="${url}/css/theme-colors/default.css"
 	id="style_color">
 
 <!-- CSS Customization -->
-<link rel="stylesheet"
-	href="${url}/css/custom.css">
+<link rel="stylesheet" href="${url}/css/custom.css">
 </head>
 <body>
 <body class="header-fixed">
@@ -119,70 +110,16 @@
 								Join more than <span class="shop-green">13,000</span> members
 								worldwide
 							</h3>
-							<img class="img-responsive"
-								src="${url}/img/map.png" alt="">
+							<img class="img-responsive" src="${url}/img/map.png" alt="">
 						</div>
 					</div>
 
 					<div class="col-md-5">
-						<form id="sky-form4" class="log-reg-block sky-form" action="register" method="post">
+						<form id="sky-form4" class="log-reg-block sky-form"
+							action="register" method="post">
 							<h2>Create New Account</h2>
 
 							<div class="login-input reg-input">
-								<div class="row">
-									<div class="col-sm-6">
-										<section>
-											<label class="input"> <input type="text"
-												name="firstname" placeholder="First name"
-												class="form-control">
-											</label>
-										</section>
-									</div>
-									<div class="col-sm-6">
-										<section>
-											<label class="input"> <input type="text"
-												name="lastname" placeholder="Last name" class="form-control">
-											</label>
-										</section>
-									</div>
-								</div>
-								<label class="select margin-bottom-15"> <select
-									name="gender" class="form-control">
-										<option value="0" selected disabled>Gender</option>
-										<option value="1">Male</option>
-										<option value="2">Female</option>
-										<option value="3">Other</option>
-								</select>
-								</label>
-								<div class="row margin-bottom-10">
-									<div class="col-xs-6">
-										<label class="select"> <select name="month"
-											class="form-control">
-												<option disabled="" selected="" value="0">Month</option>
-												<option>January</option>
-												<option>February</option>
-												<option>March</option>
-												<option>April</option>
-												<option>May</option>
-												<option>June</option>
-												<option>July</option>
-												<option>August</option>
-												<option>September</option>
-												<option>October</option>
-												<option>November</option>
-												<option>December</option>
-										</select>
-										</label>
-									</div>
-									<div class="col-xs-3">
-										<input type="text" name="day" placeholder="Day"
-											class="form-control">
-									</div>
-									<div class="col-xs-3">
-										<input type="text" name="year" placeholder="Year"
-											class="form-control">
-									</div>
-								</div>
 								<section>
 									<label class="input"> <input type="text"
 										name="username" placeholder="Username" class="form-control">
@@ -220,7 +157,7 @@
 
 						<div class="margin-bottom-20"></div>
 						<p class="text-center">
-							Already you have an account? <a href="shop-ui-login.html">Sign
+							Already you have an account? <a href="${pageContext.request.contextPath }/login">Sign
 								In</a>
 						</p>
 					</div>
@@ -258,18 +195,15 @@
 		<!--=== End Shop Suvbscribe ===-->
 
 		<!--=== Footer v4 ===-->
-<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include>
 		<!--=== End Footer v4 ===-->
 	</div>
 	<!--/wrapper-->
 
 	<!-- JS Global Compulsory -->
-	<script
-		src="${url}/plugins/jquery/jquery.min.js"></script>
-	<script
-		src="${url}/plugins/jquery/jquery-migrate.min.js"></script>
-	<script
-		src="${url}/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${url}/plugins/jquery/jquery.min.js"></script>
+	<script src="${url}/plugins/jquery/jquery-migrate.min.js"></script>
+	<script src="${url}/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<!-- JS Implementing Plugins -->
 	<script src="${url}/plugins/back-to-top.js"></script>
 	<script src="${url}/plugins/smoothScroll.js"></script>
@@ -281,8 +215,7 @@
 	<script src="${url}/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script src="${url}/js/shop.app.js"></script>
-	<script
-		src="${url}/js/forms/page_registration.js"></script>
+	<script src="${url}/js/forms/page_registration.js"></script>
 	<script>
 		jQuery(document).ready(function() {
 			App.init();
