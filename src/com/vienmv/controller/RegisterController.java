@@ -22,7 +22,7 @@ public class RegisterController extends HttpServlet {
 
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("username") != null) {
-			resp.sendRedirect(req.getContextPath()+"/admin");
+			resp.sendRedirect(req.getContextPath() + "/admin");
 			return;
 		}
 		// Check cookie
@@ -32,7 +32,7 @@ public class RegisterController extends HttpServlet {
 				if (cookie.getName().equals("username")) {
 					session = req.getSession(true);
 					session.setAttribute("username", cookie.getValue());
-					resp.sendRedirect(req.getContextPath()+"/admin");
+					resp.sendRedirect(req.getContextPath() + "/admin");
 					return;
 				}
 			}
@@ -40,43 +40,39 @@ public class RegisterController extends HttpServlet {
 
 		req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        String email = req.getParameter("email");
-        
-        UserService service = new UserServiceImpl();
-        String alertMsg ="";
+		String password = req.getParameter("password");
+		String email = req.getParameter("email");
 
-        if(service.checkExistEmail(email)){
-            alertMsg = "Email already exist!";
-            req.setAttribute("alert", alertMsg);
-            req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
-            return;
-        }
-        if(service.checkExistUsername(username)){
-            alertMsg = "Username already exist!";
-            req.setAttribute("alert", alertMsg);
-            req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp); 
-            return;
-        }
-        
-        boolean isSuccess = service.register(username,password,email);
-        
-        
-        
-        if(isSuccess){
-            req.setAttribute("alert", alertMsg);
-            req.getRequestDispatcher(Constant.Path.HOME).forward(req, resp);
-        }else{
-            alertMsg = "System error!";
-            req.setAttribute("alert", alertMsg);
-            req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
-        }
-    }
+		UserService service = new UserServiceImpl();
+		String alertMsg = "";
 
+		if (service.checkExistEmail(email)) {
+			alertMsg = "Email already exist!";
+			req.setAttribute("alert", alertMsg);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
+			return;
+		}
+		if (service.checkExistUsername(username)) {
+			alertMsg = "Username already exist!";
+			req.setAttribute("alert", alertMsg);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
+			return;
+		}
 
-        
+		boolean isSuccess = service.register(username, password, email);
+
+		if (isSuccess) {
+			req.setAttribute("alert", alertMsg);
+			resp.sendRedirect(req.getContextPath() + "/login");
+		} else {
+			alertMsg = "System error!";
+			req.setAttribute("alert", alertMsg);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
+		}
 	}
 
+}

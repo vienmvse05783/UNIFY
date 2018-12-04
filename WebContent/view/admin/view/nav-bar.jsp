@@ -11,7 +11,7 @@
 	</div>
 	<div
 		style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-		Welcome ${username.name } &nbsp; <a href="${pageContext.request.contextPath }/logout"
+		Welcome ${username } &nbsp; <a href="${pageContext.request.contextPath }/logout"
 			class="btn btn-danger square-btn-adjust">Logout</a>
 	</div>
 </nav>

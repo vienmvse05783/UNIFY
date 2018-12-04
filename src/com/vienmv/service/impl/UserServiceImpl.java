@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService {
 	public void edit(User newUser) {
 		User oldUser = userDao.get(newUser.getId());
 
-		oldUser.setName(newUser.getName());
-		oldUser.setUsername(newUser.getName());
+		oldUser.setEmail(newUser.getEmail());
+		oldUser.setUsername(newUser.getUsername());
 		oldUser.setPassword(newUser.getPassword());
 		if (newUser.getAvatar() != null) {
 			// XOA ANH CU DI
 			String fileName = oldUser.getAvatar();
-			final String dir = "/Volumes/Data/files";
+			final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
 			File file = new File(dir + "/" + fileName);
 			if (file.exists()) {
 				file.delete();
@@ -66,28 +66,28 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(String username, String password) {
 		User user = this.get(username);
-
 		if (user != null && password.equals(user.getPassword())) {
 			return user;
 		}
 
 		return null;
 	}
-	 public boolean checkExistEmail(String email){
-	        return userDao.checkExistEmail(email);
-	    }
-	    
-	    public boolean checkExistUsername(String username){
-	        return userDao.checkExistUsername(username);
-	    }
 
-		@Override
-		public boolean register(String username, String password, String name) {
-			if(userDao.checkExistUsername(username)){
-	            return false;
-	        }
-	         userDao.insert(new User(name, username, password));
-	         return true;
+	@Override
+	public boolean register(String username, String password, String email) {
+		if (userDao.checkExistUsername(username)) {
+			return false;
 		}
+		userDao.insert(new User(email, username, password));
+		return true;
+	}
+	
 
+	public boolean checkExistEmail(String email) {
+		return userDao.checkExistEmail(email);
+	}
+
+	public boolean checkExistUsername(String username) {
+		return userDao.checkExistUsername(username);
+	}
 }

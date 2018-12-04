@@ -16,7 +16,7 @@ public class JDBCConnection {
 			System.out.println("thanh cong");
 			
 		} catch (ClassNotFoundException | SQLException ex) {
-			System.out.println("that bai");
+			ex.printStackTrace();
 		}
 
 		return connection;

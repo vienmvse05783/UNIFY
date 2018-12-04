@@ -21,8 +21,8 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("username") != null) {
-			resp.sendRedirect("admin");
+		if (session != null && session.getAttribute("account") != null) {
+			resp.sendRedirect(req.getContextPath()+ "/waiting");
 			return;
 		}
 		// Check cookie
@@ -32,13 +32,13 @@ public class LoginController extends HttpServlet {
 				if (cookie.getName().equals("username")) {
 					session = req.getSession(true);
 					session.setAttribute("username", cookie.getValue());
-					resp.sendRedirect(req.getContextPath()+ "/admin");
+					resp.sendRedirect(req.getContextPath()+ "/waiting");
 					return;
 				}
 			}
 		}
 
-		req.getRequestDispatcher(Constant.Path.LOGIN).forward(req, resp);
+		req.getRequestDispatcher("view/client/view/login.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,7 +57,7 @@ public class LoginController extends HttpServlet {
 	        if(username.isEmpty() || password.isEmpty()){
 	            alertMsg = "Username and password can't be empty!";
 	            req.setAttribute("alert", alertMsg);
-	            req.getRequestDispatcher(Constant.Path.LOGIN).forward(req, resp);
+	            req.getRequestDispatcher("/view/client/view/login.jsp").forward(req, resp);
 	            return;
 	        }
 	      
@@ -68,17 +68,17 @@ public class LoginController extends HttpServlet {
 	        
 	        if(user!=null){
 	            HttpSession session = req.getSession(true);
-	            session.setAttribute("username", username);
+	            session.setAttribute("account", user);
 
 	            if(isRememberMe){
 	                saveRemeberMe(resp, username);
 	            }
 	           
-	            resp.sendRedirect("/admin");
+	            resp.sendRedirect(req.getContextPath()+"/waiting");
 	        }else{
 	            alertMsg = "Username or password isn't correct";
 	            req.setAttribute("alert", alertMsg);
-	            req.getRequestDispatcher("Constant.Path.LOGIN").forward(req, resp);
+	            req.getRequestDispatcher("/view/client/view/login.jsp").forward(req, resp);
 	        }
 	    }
 	    

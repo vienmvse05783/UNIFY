@@ -35,8 +35,8 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Table Examples</h2>
-						<h5>Welcome Jhon Deo , Love to see you back.</h5>
+						<h2>List User</h2>
+						<h5>You can edit , add, delete User </h5>
 
 					</div>
 				</div>
@@ -54,28 +54,26 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
-												<th>Rendering engine</th>
-												<th>Browser</th>
-												<th>Platform(s)</th>
-												<th>Engine version</th>
-												<th>CSS grade</th>
+												<th>ID</th>
+												<th>Email</th>
+												<th>User Name</th>
+												<th>Password</th>
+												<th>Status</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="odd gradeX">
-												<td>Trident</td>
-												<td>Internet Explorer 4.0</td>
-												<td>Win 95+</td>
-												<td class="center">4</td>
-												<td class="center">X</td>
-											</tr>
-											<tr class="gradeU">
-												<td>Other browsers</td>
-												<td>All others</td>
-												<td>-</td>
-												<td class="center">-</td>
-												<td class="center">U</td>
-											</tr>
+											<c:forEach items="${userList }" var="list">
+												<tr class="odd gradeX">
+													<td>${list.id }</td>
+													<td>${list.email }</td>
+													<td>${list.username }</td>
+													<td>${list.password }</td>
+													<td class="center">Active</td>
+													<td class="center">X</td>
+												</tr>
+											</c:forEach>
+											
 										</tbody>
 									</table>
 								</div>

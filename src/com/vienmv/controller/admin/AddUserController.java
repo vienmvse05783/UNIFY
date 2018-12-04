@@ -46,8 +46,8 @@ public class AddUserController extends HttpServlet {
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("name")) {
-					user.setName(item.getString());
+				if (item.getFieldName().equals("email")) {
+					user.setEmail(item.getString());
 				} else if (item.getFieldName().equals("username")) {
 					user.setUsername(item.getString());
 				} else if (item.getFieldName().equals("password")) {

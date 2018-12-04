@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;import com.sun.corba.se.impl.ior.GenericTaggedComponent;
 import com.vienmv.model.User;
-@WebFilter(urlPatterns= {"/admin/*"})
+@WebFilter(urlPatterns="/admin/*")
 public class SecurityFilter implements Filter {
 
 	@Override
@@ -30,13 +30,14 @@ public class SecurityFilter implements Filter {
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse resq= (HttpServletResponse) response;
 		HttpSession session = req.getSession();
-		Object obj=session.getAttribute("username");
+		Object obj=session.getAttribute("account");
 		User user=(User) obj;
-		if(obj!=null ) {
+		if(user.getRoleId()==1 ) {
+			
 			chain.doFilter(request, response);
 			return; //
 		}else {
-			resq.sendRedirect("/login");
+			resq.sendRedirect(req.getContextPath()+ "/login");
 		}
 	}
 

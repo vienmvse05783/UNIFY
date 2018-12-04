@@ -9,7 +9,7 @@ use UNIFY
 go
 create table [User](
 	id int identity,
-	[name] varchar(50),
+	email varchar(50),
 	username varchar(50) unique not null,
 	[password] varchar(36) not null,
 	avatar varchar(50),

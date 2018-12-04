@@ -17,7 +17,7 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 HttpSession session = req.getSession();
 	        
-	        session.removeAttribute("username"); //remove session
+	        session.removeAttribute("account"); //remove session
 	        
 	        Cookie[] cookies = req.getCookies();
 	        
