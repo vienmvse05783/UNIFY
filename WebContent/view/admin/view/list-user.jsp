@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>List User</h2>
-						<h5>You can edit , add, delete User </h5>
+						<h5>You can edit , add, delete User</h5>
 
 					</div>
 				</div>
@@ -60,6 +60,7 @@
 												<th>Password</th>
 												<th>Status</th>
 												<th>Action</th>
+
 											</tr>
 										</thead>
 										<tbody>
@@ -70,10 +71,15 @@
 													<td>${list.username }</td>
 													<td>${list.password }</td>
 													<td class="center">Active</td>
-													<td class="center">X</td>
+													<td><a
+														href="<c:url value='/admin/user/edit?id=${list.id }'/>"
+														class="center">Edit</a> | <a
+														href="<c:url value='/admin/user/delete?id=${list.id }'/>"
+														class="center">Delete</a></td>
+
 												</tr>
 											</c:forEach>
-											
+
 										</tbody>
 									</table>
 								</div>

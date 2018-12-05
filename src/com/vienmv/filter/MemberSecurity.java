@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 
 import com.vienmv.model.User;
-@WebFilter(urlPatterns="/")
+
 public class MemberSecurity implements Filter {
 
 	@Override

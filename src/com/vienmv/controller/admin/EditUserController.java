@@ -26,12 +26,10 @@ public class EditUserController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		User user = userService.get(Integer.parseInt(id));
-
+		int id = Integer.parseInt(req.getParameter("id"));
+		User user = userService.get(id);
 		req.setAttribute("user", user);
-
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/user/edit-user.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-user.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -45,17 +43,18 @@ public class EditUserController extends HttpServlet {
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("id")) {
-					user.setId(Integer.parseInt(item.getString()));
-				} else if (item.getFieldName().equals("email")) {
+				 if (item.getFieldName().equals("email")) {
 					user.setEmail(item.getString());
 				} else if (item.getFieldName().equals("username")) {
 					user.setUsername(item.getString());
 				} else if (item.getFieldName().equals("password")) {
 					user.setPassword(item.getString());
-				} else if (item.getFieldName().equals("avatar")) {
-					if (item.getSize() > 0) {//neu co file d
-						final String dir = "/Volumes/Data/files";
+				} 
+				else if (item.getFieldName().equals("role")) {
+					user.setRoleId(Integer.parseInt(item.getString()));}
+				else if (item.getFieldName().equals("avatar")) {
+					if (item.getSize() > 0) {// neu co file d
+						final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
 						String originalFileName = item.getName();
 						int index = originalFileName.lastIndexOf(".");
 						String ext = originalFileName.substring(index + 1);
