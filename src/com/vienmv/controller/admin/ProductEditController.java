@@ -16,62 +16,76 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.vienmv.model.Category;
+import com.vienmv.model.Product;
 import com.vienmv.model.User;
+import com.vienmv.service.CategoryService;
+import com.vienmv.service.ProductService;
 import com.vienmv.service.UserService;
+import com.vienmv.service.impl.CategoryServiceImpl;
+import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/user/add" })
-public class AddUserController extends HttpServlet {
-	UserService userService = new UserServiceImpl();
+@WebServlet(urlPatterns = { "/admin/product/edit" })
+public class ProductEditController extends HttpServlet {
+	ProductService productService = new ProductServiceImpl();
+	CategoryService categoryService = new CategoryServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String eString = req.getParameter("e");
-		if (eString != null) {
-			if (eString.equals("1")) {
-				req.setAttribute("errMsg", "Username da ton tai!!!");
-			}
-		}
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/user/add-user.jsp");
+		String id = req.getParameter("id");
+		Product product = productService.get(Integer.parseInt(id));
+		List<Category> categories = categoryService.getAll();
+
+		req.setAttribute("categories", categories);
+
+		req.setAttribute("product", product);
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/product/edit-product.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		User user = new User();
+		Product product = new Product();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("email")) {
-					user.setEmail(item.getString());
-				} else if (item.getFieldName().equals("username")) {
-					user.setUsername(item.getString());
-				} else if (item.getFieldName().equals("password")) {
-					user.setPassword(item.getString());
-				} else if (item.getFieldName().equals("avatar")) {
-					final String dir = "/Volumes/Data/files";
+				if (item.getFieldName().equals("id")) {
+					product.setId(Integer.parseInt(item.getString()));
+				} else if (item.getFieldName().equals("name")) {
+					product.setName(item.getString());
+				} else if (item.getFieldName().equals("cate")) {
+					product.setCategory(categoryService.get(item.getString()));
+				} else if (item.getFieldName().equals("price")) {
+					product.setPrice(Long.parseLong(item.getString()));
+				} else if (item.getFieldName().equals("image")) {
+					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);
 					String fileName = System.currentTimeMillis() + "." + ext;
 					File file = new File(dir + "/" + fileName);
 					item.write(file);
-					
-					user.setAvatar(fileName);
+
+					product.setImage(fileName);
+					} else {
+						product.setImage(null);
+					}
 				}
-			}
+			
 
-			userService.insert(user);
+			productService.edit(product);
 
-			resp.sendRedirect(req.getContextPath() + "/admin/user/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/product/list");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			resp.sendRedirect(req.getContextPath() + "/admin/user/add?e=1");
+			e.printStackTrace();
 		}
 
 	}

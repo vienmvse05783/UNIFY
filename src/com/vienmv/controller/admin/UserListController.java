@@ -14,7 +14,7 @@ import com.vienmv.model.User;
 import com.vienmv.service.UserService;
 import com.vienmv.service.impl.UserServiceImpl;
 @WebServlet(urlPatterns= {"/admin/user/list"})
-public class ListUserController extends HttpServlet {
+public class UserListController extends HttpServlet {
 	UserService userService = new UserServiceImpl();
 	
 	@Override

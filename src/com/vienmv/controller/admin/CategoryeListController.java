@@ -19,22 +19,20 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.vienmv.model.Category;
 import com.vienmv.model.User;
 import com.vienmv.service.CategoryService;
-import com.vienmv.service.ProductService;
 import com.vienmv.service.UserService;
 import com.vienmv.service.impl.CategoryServiceImpl;
-import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/product/delete" })
-public class DeleteProductController extends HttpServlet {
-	ProductService productService = new ProductServiceImpl();
+@WebServlet(urlPatterns = { "/admin/category/list" })
+public class CategoryeListController extends HttpServlet {
+	CategoryService cateService = new CategoryServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		productService.delete(Integer.parseInt(id));
-
-		resp.sendRedirect(req.getContextPath() + "/admin/product/list");
+		List<Category> cateList = cateService.getAll();
+		req.setAttribute("cateList", cateList);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/category/list-category.jsp");
+		dispatcher.forward(req, resp);
 	}
 
 }

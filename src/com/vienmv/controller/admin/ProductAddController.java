@@ -26,22 +26,18 @@ import com.vienmv.service.impl.CategoryServiceImpl;
 import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/product/edit" })
-public class EditProductController extends HttpServlet {
+@WebServlet(urlPatterns = { "/admin/product/add" })
+public class ProductAddController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService categoryService = new CategoryServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		Product product = productService.get(Integer.parseInt(id));
 		List<Category> categories = categoryService.getAll();
 
 		req.setAttribute("categories", categories);
 
-		req.setAttribute("product", product);
-
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/product/edit-product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/product/add-product.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -55,16 +51,14 @@ public class EditProductController extends HttpServlet {
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("id")) {
-					product.setId(Integer.parseInt(item.getString()));
-				} else if (item.getFieldName().equals("name")) {
+				if (item.getFieldName().equals("name")) {
 					product.setName(item.getString());
 				} else if (item.getFieldName().equals("cate")) {
 					product.setCategory(categoryService.get(item.getString()));
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
 				} else if (item.getFieldName().equals("image")) {
-					final String dir = "C:/Users/Administrator/Downloads/WebDemo/WebDemo/WebContent/static/admin/images";
+					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);
@@ -73,13 +67,10 @@ public class EditProductController extends HttpServlet {
 					item.write(file);
 
 					product.setImage(fileName);
-					} else {
-						product.setImage(null);
-					}
 				}
-			
+			}
 
-			productService.edit(product);
+			productService.insert(product);
 
 			resp.sendRedirect(req.getContextPath() + "/admin/product/list");
 		} catch (FileUploadException e) {

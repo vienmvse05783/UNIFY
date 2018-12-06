@@ -20,16 +20,19 @@ import com.vienmv.model.User;
 import com.vienmv.service.UserService;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/user/edit" })
-public class EditUserController extends HttpServlet {
+@WebServlet(urlPatterns = { "/admin/user/add" })
+public class UserAddController extends HttpServlet {
 	UserService userService = new UserServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getParameter("id"));
-		User user = userService.get(id);
-		req.setAttribute("user", user);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-user.jsp");
+		String eString = req.getParameter("e");
+		if (eString != null) {
+			if (eString.equals("1")) {
+				req.setAttribute("errMsg", "Username da ton tai!!!");
+			}
+		}
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/user/add-user.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -43,39 +46,34 @@ public class EditUserController extends HttpServlet {
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				 if (item.getFieldName().equals("email")) {
-					user.setEmail(item.getString());
+				if (item.getFieldName().equals("email")) {
+					user.setEmail(item.getString());;
 				} else if (item.getFieldName().equals("username")) {
 					user.setUsername(item.getString());
 				} else if (item.getFieldName().equals("password")) {
 					user.setPassword(item.getString());
-				} 
-				else if (item.getFieldName().equals("role")) {
-					user.setRoleId(Integer.parseInt(item.getString()));}
-				else if (item.getFieldName().equals("avatar")) {
-					if (item.getSize() > 0) {// neu co file d
-						final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
-						String originalFileName = item.getName();
-						int index = originalFileName.lastIndexOf(".");
-						String ext = originalFileName.substring(index + 1);
-						String fileName = System.currentTimeMillis() + "." + ext;
-						File file = new File(dir + "/" + fileName);
-						item.write(file);
+				} else if (item.getFieldName().equals("role")) {
+					user.setRoleId(Integer.parseInt(item.getString()));;
+				} else if (item.getFieldName().equals("avatar")) {
+					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
+					String originalFileName = item.getName();
+					int index = originalFileName.lastIndexOf(".");
+					String ext = originalFileName.substring(index + 1);
+					String fileName = System.currentTimeMillis() + "." + ext;
+					File file = new File(dir + "/" + fileName);
+					item.write(file);
 
-						user.setAvatar(fileName);
-					} else {
-						user.setAvatar(null);
-					}
+					user.setAvatar(fileName);
 				}
 			}
 
-			userService.edit(user);
+			userService.insert(user);
 
 			resp.sendRedirect(req.getContextPath() + "/admin/user/list");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			resp.sendRedirect(req.getContextPath() + "/admin/user/add?e=1");
 		}
 
 	}

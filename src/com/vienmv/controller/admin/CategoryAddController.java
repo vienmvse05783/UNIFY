@@ -17,26 +17,34 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.vienmv.model.Category;
-import com.vienmv.model.Product;
 import com.vienmv.model.User;
 import com.vienmv.service.CategoryService;
-import com.vienmv.service.ProductService;
 import com.vienmv.service.UserService;
 import com.vienmv.service.impl.CategoryServiceImpl;
-import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/product/list" })
-public class ListProductController extends HttpServlet {
-	ProductService productService = new ProductServiceImpl();
+@WebServlet(urlPatterns = { "/admin/category/add" })
+public class CategoryAddController extends HttpServlet {
 	CategoryService cateService = new CategoryServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		List<Product> proList = productService.getAll();
-//		req.setAttribute("proList", proList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/list-product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/category/add-category.jsp");
 		dispatcher.forward(req, resp);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String name = req.getParameter("name");
+		String des = req.getParameter("des");
+	
+		Category category = new Category();
+		category.setName(name);
+		
+
+		cateService.insert(category);
+
+		resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+
+	}
 }
