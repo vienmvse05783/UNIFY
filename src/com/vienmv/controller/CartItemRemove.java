@@ -27,6 +27,6 @@ public class CartItemRemove extends HttpServlet {
 			// Cap nhat lai Session
 			httpSession.setAttribute("cart", map);
 		}
-		resp.sendRedirect(req.getContextPath() + "/admin/cart");
+		resp.sendRedirect(req.getContextPath() + "/member/cart");
 	}
 }

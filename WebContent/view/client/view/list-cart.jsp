@@ -1,4 +1,4 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -99,119 +99,35 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${sessionScope.cart}" var="map">
-									
-									<tr>
-									<c:url value="/image?fname=${map.value.product.image }" var="imgUrl"></c:url>
-											<td class="product-in-table"><img class="img-responsive"
-												src="${imgUrl}" alt="">
-												<div class="product-it-in">
-													<h3>${map.value.product.name }</h3>
-													<span>Sed aliquam tincidunt tempus</span>
-												</div></td>
-											<td>$ ${map.value.product.price }</td>
-											<td>
-												${map.value.quantity }
-											</td>
-											<td class="shop-red">$ ${map.value.product.price * map.value.quantity }</td>
-											<td>
-												<button type="button" class="close">
-													<span>&times;</span><span class="sr-only">Close</span>
-												</button>
-											</td>
-										</tr>									
-									</c:forEach>
-							
+										<c:forEach items="${sessionScope.cart}" var="map">
+
+											<tr>
+												<c:url value="/image?fname=${map.value.product.image }"
+													var="imgUrl"></c:url>
+												<td class="product-in-table"><img
+													class="img-responsive" src="${imgUrl}" alt="">
+													<div class="product-it-in">
+														<h3>${map.value.product.name }</h3>
+														<span>${map.value.product.des }</span>
+													</div></td>
+												<td>$ ${map.value.product.price }</td>
+												<td>${map.value.quantity }</td>
+												<td class="shop-red">$ ${map.value.product.price * map.value.quantity }</td>
+												<td><a
+													href="${pageContext.request.contextPath}/member/cart/remove?pId=${map.value.product.id}"><button
+															type="button" class="close">
+															<span>&times;</span><span class="sr-only">Close</span>
+														</button></a></td>
+											</tr>
+										</c:forEach>
+
 									</tbody>
 								</table>
 							</div>
 						</section>
 
-						<div class="header-tags">
-							<div class="overflow-h">
-								<h2>Billing info</h2>
-								<p>Shipping and address infot</p>
-								<i class="rounded-x fa fa-home"></i>
-							</div>
-						</div>
-						<section class="billing-info">
-							<div class="row">
-								<div class="col-md-6 md-margin-bottom-40">
-									<h2 class="title-type">Billing Address</h2>
-									<div class="billing-info-inputs checkbox-list">
-										<div class="row">
-											<div class="col-sm-6">
-												<input id="name" type="text" placeholder="First Name"
-													name="firstname" class="form-control required"> <input
-													id="email" type="text" placeholder="Email" name="email"
-													class="form-control required email">
-											</div>
-											<div class="col-sm-6">
-												<input id="surname" type="text" placeholder="Last Name"
-													name="lastname" class="form-control required"> <input
-													id="phone" type="tel" placeholder="Phone" name="phone"
-													class="form-control required">
-											</div>
-										</div>
-										<input id="billingAddress" type="text"
-											placeholder="Address Line 1" name="address1"
-											class="form-control required"> <input
-											id="billingAddress2" type="text" placeholder="Address Line 2"
-											name="address2" class="form-control required">
-										<div class="row">
-											<div class="col-sm-6">
-												<input id="city" type="text" placeholder="City" name="city"
-													class="form-control required">
-											</div>
-											<div class="col-sm-6">
-												<input id="zip" type="text" placeholder="Zip/Postal Code"
-													name="zip" class="form-control required">
-											</div>
-										</div>
 
-										<label class="checkbox text-left"> <input
-											type="checkbox" name="checkbox" /> <i></i> Ship item to the
-											above billing address
-										</label>
-									</div>
-								</div>
 
-								<div class="col-md-6">
-									<h2 class="title-type">Shipping Address</h2>
-									<div class="billing-info-inputs checkbox-list">
-										<div class="row">
-											<div class="col-sm-6">
-												<input id="name2" type="text" placeholder="First Name"
-													name="firstname" class="form-control"> <input
-													id="email2" type="text" placeholder="Email" name="email"
-													class="form-control email">
-											</div>
-											<div class="col-sm-6">
-												<input id="surname2" type="text" placeholder="Last Name"
-													name="lastname" class="form-control"> <input
-													id="phone2" type="tel" placeholder="Phone" name="phone"
-													class="form-control">
-											</div>
-										</div>
-										<input id="shippingAddress" type="text"
-											placeholder="Address Line 1" name="address1"
-											class="form-control"> <input id="shippingAddress2"
-											type="text" placeholder="Address Line 2" name="address2"
-											class="form-control">
-										<div class="row">
-											<div class="col-sm-6">
-												<input id="city2" type="text" placeholder="City" name="city"
-													class="form-control">
-											</div>
-											<div class="col-sm-6">
-												<input id="zip2" type="text" placeholder="Zip/Postal Code"
-													name="zip" class="form-control">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
 
 						<div class="header-tags">
 							<div class="overflow-h">
@@ -402,9 +318,14 @@
 								<div class="col-sm-3 col-sm-offset-5">
 									<ul class="list-inline total-result">
 										<li>
-											<h4>Subtotal:</h4>
+											<h4>Subtotal:</h4> <c:set var="total" value="${0}" /> <c:forEach
+												items="${sessionScope.cart}" var="map">
+												<c:set var="total"
+													value="${total + map.value.quantity * map.value.product.price}" />
+											</c:forEach>
 											<div class="total-result-in">
-												<span>$ 1280.00</span>
+												<span>$ ${total }</span>
+
 											</div>
 										</li>
 										<li>
@@ -417,7 +338,8 @@
 										<li class="total-price">
 											<h4>Total:</h4>
 											<div class="total-result-in">
-												<span>$ 1280.00</span>
+												<span>$ ${total }</span>
+
 											</div>
 										</li>
 									</ul>

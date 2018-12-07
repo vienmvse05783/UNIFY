@@ -52,10 +52,15 @@
 											</div>
 											<div class="form-group">
 												<label>Price ($)</label> <input class="form-control"
-													placeholder="please enter Price" type="number"
-													name="price" />
+													placeholder="please enter Price" type="number" name="price" />
 											</div>
-											
+											<div class="form-group">
+												<label>Description </label>
+												<br>
+												<textarea rows="4" cols="50" name="des"></textarea>
+
+											</div>
+
 											<div class="form-group">
 												<label>Category</label>
 												<div class="checkbox">

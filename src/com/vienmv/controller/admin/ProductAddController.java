@@ -57,6 +57,8 @@ public class ProductAddController extends HttpServlet {
 					product.setCategory(categoryService.get(Integer.parseInt(item.getString())));
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
+				} else if (item.getFieldName().equals("des")) {
+					product.setDes(item.getString());;
 				} else if (item.getFieldName().equals("image")) {
 					final String dir = "F:\\upload";
 					String originalFileName = item.getName();

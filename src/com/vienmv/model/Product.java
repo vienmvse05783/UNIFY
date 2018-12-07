@@ -7,7 +7,23 @@ public class Product implements Serializable {
 	private String name;
 	private long price;
 	private String image;
+	private String des;
 	private Category category;//cate_id
+	
+
+	public Product() {
+		super();
+	}
+
+	public Product(int id, String name, long price, String image, String des, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.image = image;
+		this.des = des;
+		this.category = category;
+	}
 
 	public int getId() {
 		return id;
@@ -41,6 +57,14 @@ public class Product implements Serializable {
 		this.image = image;
 	}
 
+	public String getDes() {
+		return des;
+	}
+
+	public void setDes(String des) {
+		this.des = des;
+	}
+
 	public Category getCategory() {
 		return category;
 	}
@@ -49,4 +73,5 @@ public class Product implements Serializable {
 		this.category = category;
 	}
 
+	
 }

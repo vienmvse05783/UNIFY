@@ -319,15 +319,17 @@
 						</div>
 					</div>
 					<!--/end result category-->
+					<c:forEach items="${productList }" var="p" >
 
 					<div class="filter-results">
+					
 						<div
 							class="list-product-description product-description-brd margin-bottom-30">
 							<div class="row">
-							<c:forEach items="productList" var="p" >
+							
 								<div class="col-sm-4">
 								<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
-									<a href="shop-ui-inner.html"><img
+									<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img
 										class="img-responsive sm-margin-bottom-20"
 										src="${imgUrl}" alt=""></a>
 								</div>
@@ -356,10 +358,8 @@
 												class="title-price line-through">$ ${p.price *1.25 }</span>
 											
 										</div>
-										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
-											consectetur adipiscing elit. Maecenas sollicitudin erat nec
-											ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis.
-											Aenean nibh est, hendrerit non conva.</p>
+										<p class="margin-bottom-20">${p.des }</p>
+										
 										<ul class="list-inline add-to-wishlist margin-bottom-20">
 											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
 												href="#">Add to Wishlist</a></li>
@@ -371,12 +371,14 @@
 									</div>
 									
 									
-									</c:forEach>
-								</div>
+									
+								</div>								
 							</div>
+							
 						</div>
 
 					</div>
+					</c:forEach>
 					<!--/end filter resilts-->
 
 					<div class="text-center">

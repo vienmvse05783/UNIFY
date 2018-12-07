@@ -257,7 +257,7 @@
                         <!-- End Clothes -->
 
                         <!-- Main Demo -->
-                        <li><a href="../index.html">Main Demo</a></li>
+                        <li><a href="${pageContext.request.contextPath }">Main Demo</a></li>
                         <!-- Main Demo -->
                     </ul>
                     <!-- End Nav Menu -->                    

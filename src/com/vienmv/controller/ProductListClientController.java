@@ -27,7 +27,7 @@ import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/product/list" })
-public class ProductListController extends HttpServlet {
+public class ProductListClientController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
 
@@ -37,6 +37,6 @@ public class ProductListController extends HttpServlet {
 		req.setAttribute("productList", productList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/client/view/product-list.jsp");
 		dispatcher.forward(req, resp);
-	}
+	}// cái này sai
 
 }

@@ -59,6 +59,7 @@
 												<th>Name</th>
 												<th>Price($)</th>
 												<th>Category</th>
+												<th>Description</th>
 												<th>Action </th>
 											</tr>
 										</thead>
@@ -72,6 +73,7 @@
 													<td>${pro.name }</td>
 												<td>${pro.price }</td>
 												<td>${pro.category.name }</td>
+												<td>${pro.des } </td>
 												<td><a
 														href="<c:url value='/product/detail?id=${pro.id }'/>"
 														class="center">Detail</a> | <a

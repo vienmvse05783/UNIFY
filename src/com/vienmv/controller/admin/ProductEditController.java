@@ -61,6 +61,8 @@ public class ProductEditController extends HttpServlet {
 					product.setName(item.getString());
 				} else if (item.getFieldName().equals("cate")) {
 					product.setCategory(categoryService.get(item.getString()));
+				} else if (item.getFieldName().equals("des")) {
+					product.setDes(item.getString());;
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
 				} else if (item.getFieldName().equals("image")) {

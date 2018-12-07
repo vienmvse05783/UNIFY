@@ -119,10 +119,7 @@
 									| <a href="#"> Add Review</a></span></li>
 						</ul>
 						<!--/end shop product ratings-->
-
-
-						<br>
-
+						${product.des } <br>
 						<ul class="list-inline shop-product-prices margin-bottom-30">
 							<li class="shop-red">$ ${product.price }.0</li>
 							<li class="line-through">${product.price * 1.25 }</li>
@@ -157,10 +154,10 @@
 
 						<h3 class="shop-product-title">Quantity</h3>
 						<div class="margin-bottom-40">
-						
+
 							<form name="f1" class="product-quantity sm-margin-bottom-20"
 								method="get" action="<c:url value="/member/cart/add"></c:url>">
-								<input type="text" value="${product.id }" name="pId" >
+								<input type="text" value="${product.id }" name="pId">
 								<button type='button' class="quantity-button" name='subtract'
 									onclick='javascript: subtractQty();' value='-'>-</button>
 								<input type='text' class="quantity-field" name='quantity'

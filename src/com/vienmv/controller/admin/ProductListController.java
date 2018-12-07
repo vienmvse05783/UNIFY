@@ -38,5 +38,5 @@ public class ProductListController extends HttpServlet {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/list-product.jsp");
 		dispatcher.forward(req, resp);
 	}
-
+// cái này đúng
 }
