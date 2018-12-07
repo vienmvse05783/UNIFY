@@ -15,7 +15,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void insert(Category category) {
-		String sql = "INSERT INTO category(name) VALUES (?)";
+		String sql = "INSERT INTO category(cate_name) VALUES (?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -29,7 +29,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void edit(Category category) {
-		String sql = "UPDATE category SET name = ? WHERE id = ?";
+		String sql = "UPDATE category SET cate_name = ? WHERE cate_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -45,7 +45,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM category WHERE id = ?";
+		String sql = "DELETE FROM category WHERE cate_id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -60,7 +60,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 	
 	@Override
 	public Category get(int id) {
-		String sql = "SELECT * FROM category WHERE id = ? ";
+		String sql = "SELECT * FROM category WHERE cate_id = ? ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -71,8 +71,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			while (rs.next()) {
 				Category category = new Category();
 
-				category.setId(rs.getInt("id"));
-				category.setName(rs.getString("name"));
+				category.setId(rs.getInt("cate_id"));
+				category.setName(rs.getString("cate_name"));
 
 				return category;
 
@@ -87,7 +87,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 	@Override
 	public List<Category> getAll() {
 		List<Category> categories = new ArrayList<Category>();
-		String sql = "SELECT * FROM category";
+		String sql = "SELECT * FROM Category";
 		Connection conn = super.getJDBCConnection();
 
 		try {
@@ -97,8 +97,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			while (rs.next()) {
 				Category category = new Category();
 
-				category.setId(rs.getInt("id"));
-				category.setName(rs.getString("name"));
+				category.setId(rs.getInt("cate_id"));
+				category.setName(rs.getString("cate_name"));
 
 				categories.add(category);
 			}

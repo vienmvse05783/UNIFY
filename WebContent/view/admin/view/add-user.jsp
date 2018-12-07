@@ -38,45 +38,43 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Info you can change</div>
+							<div class="panel-heading">Add User</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
 										<h3>User:</h3>
-										<c:url value="/admin/user/edit" var="edit"></c:url>
-										<form role="form" action="${edit }" method="post"
-											enctype="multipart/form-data">
+										
+										<form role="form" action="add"  method="post" enctype="multipart/form-data">
 											<div class="form-group">
 												<label>User Name:</label> <input class="form-control"
-													value="${user.username }" name="username" />
+													placeholder="please enter username" name="username" />
 											</div>
 											<div class="form-group">
 												<label>Password</label> <input class="form-control"
-													value="${user.password }" type="password" name="password" />
+													placeholder="please enter password" type="password"
+													name="password" />
 											</div>
 											<div class="form-group">
 												<label>Email:</label> <input class="form-control"
-													value="${user.email }" name="email" />
+													placeholder="Please enter email" name="email" />
 											</div>
 											<div class="form-group">
 												<label>Role</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="1" name="role" />Admin
-													</label> <br> <label> <input type="radio" value="2"
-														name="role" />Client
+													<label> <input type="radio" value="1" name="role"/>Admin
+													</label>
+													<br>
+													<label> <input type="radio" value="2" name="role" />Client
 													</label>
 												</div>
-
+												
 											</div>
-
 											<div class="form-group">
-												<label>Choose Avatar</label> <input type="file"
-													name="avatar" />
+												<label>Avatar</label> <input type="file" name="avatar" />
 											</div>
-											<button type="submit" class="btn btn-default">Edit</button>
+											<button type="submit" class="btn btn-default">Add</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
-
 
 
 									</div>

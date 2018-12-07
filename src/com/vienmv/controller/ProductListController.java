@@ -1,4 +1,4 @@
-package com.vienmv.controller.admin;
+package com.vienmv.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,16 +26,16 @@ import com.vienmv.service.impl.CategoryServiceImpl;
 import com.vienmv.service.impl.ProductServiceImpl;
 import com.vienmv.service.impl.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/admin/product/list" })
+@WebServlet(urlPatterns = { "/product/list" })
 public class ProductListController extends HttpServlet {
 	ProductService productService = new ProductServiceImpl();
 	CategoryService cateService = new CategoryServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Product> proList = productService.getAll();
-		req.setAttribute("proList", proList);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/list-product.jsp");
+		List<Product> productList = productService.getAll();
+		req.setAttribute("productList", productList);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/client/view/product-list.jsp");
 		dispatcher.forward(req, resp);
 	}
 

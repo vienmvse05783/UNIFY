@@ -55,11 +55,14 @@
 										<thead>
 											<tr>
 												<th>ID</th>
+												<th>Avatar</th>
 												<th>Email</th>
 												<th>User Name</th>
 												<th>Password</th>
 												<th>Status</th>
+												<th> Role </th>
 												<th>Action</th>
+												
 
 											</tr>
 										</thead>
@@ -67,10 +70,20 @@
 											<c:forEach items="${userList }" var="list">
 												<tr class="odd gradeX">
 													<td>${list.id }</td>
+													<c:url value="/image?fname=${list.avatar }" var="imgUrl"></c:url>
+													<td><img height="70" width="90" src="${imgUrl}" /></td>
 													<td>${list.email }</td>
 													<td>${list.username }</td>
 													<td>${list.password }</td>
 													<td class="center">Active</td>
+
+													<td class="center"><c:choose>
+															<c:when test="${list.roleId ==1 }">
+													Admin
+													</c:when>
+															<c:otherwise>Client</c:otherwise>
+														</c:choose></td>
+
 													<td><a
 														href="<c:url value='/admin/user/edit?id=${list.id }'/>"
 														class="center">Edit</a> | <a

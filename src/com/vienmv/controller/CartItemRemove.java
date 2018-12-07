@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.vienmv.model.CartItem;
 
-@WebServlet(urlPatterns = { "/admin/cart/delete" }) // ?pId=?123
+@WebServlet(urlPatterns = { "/member/cart/remove" }) // ?pId=?123
 public class CartItemRemove extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

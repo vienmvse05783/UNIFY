@@ -32,7 +32,7 @@ public class UserAddController extends HttpServlet {
 				req.setAttribute("errMsg", "Username da ton tai!!!");
 			}
 		}
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/user/add-user.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/add-user.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -55,7 +55,7 @@ public class UserAddController extends HttpServlet {
 				} else if (item.getFieldName().equals("role")) {
 					user.setRoleId(Integer.parseInt(item.getString()));;
 				} else if (item.getFieldName().equals("avatar")) {
-					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
+					final String dir = "F:\\upload";
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);

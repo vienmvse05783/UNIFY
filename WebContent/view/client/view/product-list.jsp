@@ -324,18 +324,23 @@
 						<div
 							class="list-product-description product-description-brd margin-bottom-30">
 							<div class="row">
+							<c:forEach items="productList" var="p" >
 								<div class="col-sm-4">
+								<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
 									<a href="shop-ui-inner.html"><img
 										class="img-responsive sm-margin-bottom-20"
-										src="${url}/img/blog/16.jpg" alt=""></a>
+										src="${imgUrl}" alt=""></a>
 								</div>
 								<div class="col-sm-8 product-description">
+									
+									
 									<div class="overflow-h margin-bottom-5">
 										<ul class="list-inline overflow-h">
 											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">Double-breasted</a>
+													<a href="shop-ui-inner.html">${p.name }</a>
+													
 												</h4></li>
-											<li><span class="gender text-uppercase">Men</span></li>
+											<li><span class="gender text-uppercase">${p.category.name }</span></li>
 											<li class="pull-right">
 												<ul class="list-inline product-ratings">
 													<li><i class="rating-selected fa fa-star"></i></li>
@@ -347,8 +352,9 @@
 											</li>
 										</ul>
 										<div class="margin-bottom-10">
-											<span class="title-price margin-right-10">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
+											<span class="title-price margin-right-10">$ ${p.price }.0</span> <span
+												class="title-price line-through">$ ${p.price *1.25 }</span>
+											
 										</div>
 										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
 											consectetur adipiscing elit. Maecenas sollicitudin erat nec
@@ -360,195 +366,16 @@
 											<li class="compare-in"><i class="fa fa-exchange"></i> <a
 												href="#">Add to Compare</a></li>
 										</ul>
-										<button type="button" class="btn-u btn-u-sea-shop">Add
-											to Cart</button>
+										<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}" ><button type="button" class="btn-u btn-u-sea-shop">Add
+											to Cart</button></a>
 									</div>
+									
+									
+									</c:forEach>
 								</div>
 							</div>
 						</div>
 
-						<div
-							class="list-product-description product-description-brd margin-bottom-30">
-							<div class="row">
-								<div class="col-sm-4">
-									<a href="shop-ui-inner.html"><img
-										class="img-responsive sm-margin-bottom-20"
-										src="${url}/img/blog/17.jpg" alt=""></a>
-								</div>
-								<div class="col-sm-8 product-description">
-									<div class="overflow-h margin-bottom-5">
-										<ul class="list-inline overflow-h">
-											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">Double-breasted</a>
-												</h4></li>
-											<li><span class="gender text-uppercase">Men</span></li>
-											<li class="pull-right">
-												<ul class="list-inline product-ratings">
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-												</ul>
-											</li>
-										</ul>
-										<div class="margin-bottom-10">
-											<span class="title-price margin-right-10">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
-										</div>
-										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
-											consectetur adipiscing elit. Maecenas sollicitudin erat nec
-											ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis.
-											Aenean nibh est, hendrerit non conva.</p>
-										<ul class="list-inline add-to-wishlist margin-bottom-20">
-											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-												href="#">Add to Wishlist</a></li>
-											<li class="compare-in"><i class="fa fa-exchange"></i> <a
-												href="#">Add to Compare</a></li>
-										</ul>
-										<button type="button" class="btn-u btn-u-sea-shop">Add
-											to Cart</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div
-							class="list-product-description product-description-brd margin-bottom-30">
-							<div class="row">
-								<div class="col-sm-4">
-									<a href="shop-ui-inner.html"><img
-										class="img-responsive sm-margin-bottom-20"
-										src="${url}/img/blog/21.jpg" alt=""></a>
-								</div>
-								<div class="col-sm-8 product-description">
-									<div class="overflow-h margin-bottom-5">
-										<ul class="list-inline overflow-h">
-											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">Double-breasted</a>
-												</h4></li>
-											<li><span class="gender text-uppercase">Men</span></li>
-											<li class="pull-right">
-												<ul class="list-inline product-ratings">
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-												</ul>
-											</li>
-										</ul>
-										<div class="margin-bottom-10">
-											<span class="title-price margin-right-10">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
-										</div>
-										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
-											consectetur adipiscing elit. Maecenas sollicitudin erat nec
-											ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis.
-											Aenean nibh est, hendrerit non conva.</p>
-										<ul class="list-inline add-to-wishlist margin-bottom-20">
-											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-												href="#">Add to Wishlist</a></li>
-											<li class="compare-in"><i class="fa fa-exchange"></i> <a
-												href="#">Add to Compare</a></li>
-										</ul>
-										<button type="button" class="btn-u btn-u-sea-shop">Add
-											to Cart</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div
-							class="list-product-description product-description-brd margin-bottom-30">
-							<div class="row">
-								<div class="col-sm-4">
-									<a href="shop-ui-inner.html"><img
-										class="img-responsive sm-margin-bottom-20"
-										src="${url}/img/blog/22.jpg" alt=""></a>
-								</div>
-								<div class="col-sm-8 product-description">
-									<div class="overflow-h margin-bottom-5">
-										<ul class="list-inline overflow-h">
-											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">Double-breasted</a>
-												</h4></li>
-											<li><span class="gender text-uppercase">Men</span></li>
-											<li class="pull-right">
-												<ul class="list-inline product-ratings">
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-												</ul>
-											</li>
-										</ul>
-										<div class="margin-bottom-10">
-											<span class="title-price margin-right-10">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
-										</div>
-										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
-											consectetur adipiscing elit. Maecenas sollicitudin erat nec
-											ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis.
-											Aenean nibh est, hendrerit non conva.</p>
-										<ul class="list-inline add-to-wishlist margin-bottom-20">
-											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-												href="#">Add to Wishlist</a></li>
-											<li class="compare-in"><i class="fa fa-exchange"></i> <a
-												href="#">Add to Compare</a></li>
-										</ul>
-										<button type="button" class="btn-u btn-u-sea-shop">Add
-											to Cart</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="list-product-description product-description-brd">
-							<div class="row">
-								<div class="col-sm-4">
-									<a href="shop-ui-inner.html"><img
-										class="img-responsive sm-margin-bottom-20"
-										src="${url}/img/blog/23.jpg" alt=""></a>
-								</div>
-								<div class="col-sm-8 product-description">
-									<div class="overflow-h margin-bottom-5">
-										<ul class="list-inline overflow-h">
-											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">Double-breasted</a>
-												</h4></li>
-											<li><span class="gender text-uppercase">Men</span></li>
-											<li class="pull-right">
-												<ul class="list-inline product-ratings">
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating-selected fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-													<li><i class="rating fa fa-star"></i></li>
-												</ul>
-											</li>
-										</ul>
-										<div class="margin-bottom-10">
-											<span class="title-price margin-right-10">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
-										</div>
-										<p class="margin-bottom-20">Lorem ipsum dolor sit amet,
-											consectetur adipiscing elit. Maecenas sollicitudin erat nec
-											ornarevolu tpat. Etiam ut felis nec nisl eleifend lobortis.
-											Aenean nibh est, hendrerit non conva.</p>
-										<ul class="list-inline add-to-wishlist margin-bottom-20">
-											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-												href="#">Add to Wishlist</a></li>
-											<li class="compare-in"><i class="fa fa-exchange"></i> <a
-												href="#">Add to Compare</a></li>
-										</ul>
-										<button type="button" class="btn-u btn-u-sea-shop">Add
-											to Cart</button>
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 					<!--/end filter resilts-->
 

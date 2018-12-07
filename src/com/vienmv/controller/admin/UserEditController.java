@@ -43,18 +43,19 @@ public class UserEditController extends HttpServlet {
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				 if (item.getFieldName().equals("email")) {
+				if (item.getFieldName().equals("id")) {
+					user.setId(Integer.parseInt(item.getString()));
+				} else if (item.getFieldName().equals("email")) {
 					user.setEmail(item.getString());
 				} else if (item.getFieldName().equals("username")) {
 					user.setUsername(item.getString());
 				} else if (item.getFieldName().equals("password")) {
 					user.setPassword(item.getString());
-				} 
-				else if (item.getFieldName().equals("role")) {
-					user.setRoleId(Integer.parseInt(item.getString()));}
-				else if (item.getFieldName().equals("avatar")) {
+				} else if (item.getFieldName().equals("role")) {
+					user.setRoleId(Integer.parseInt(item.getString()));
+				} else if (item.getFieldName().equals("avatar")) {
 					if (item.getSize() > 0) {// neu co file d
-						final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
+						final String dir = "F:\\upload";
 						String originalFileName = item.getName();
 						int index = originalFileName.lastIndexOf(".");
 						String ext = originalFileName.substring(index + 1);
@@ -75,7 +76,7 @@ public class UserEditController extends HttpServlet {
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			resp.sendRedirect(req.getContextPath() + "/admin/user/list");
 		}
 
 	}

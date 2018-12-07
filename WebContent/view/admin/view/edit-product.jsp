@@ -28,8 +28,8 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Edit User</h2>
-						<h5>You can edit info user in here</h5>
+						<h2>Add Product</h2>
+						<h5>Add product you can sell</h5>
 					</div>
 				</div>
 				<!-- /. ROW  -->
@@ -38,45 +38,40 @@
 					<div class="col-md-12">
 						<!-- Form Elements -->
 						<div class="panel panel-default">
-							<div class="panel-heading">Info you can change</div>
+							<div class="panel-heading">Add Product</div>
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
 										<h3>User:</h3>
-										<c:url value="/admin/user/edit" var="edit"></c:url>
-										<form role="form" action="${edit }" method="post"
+
+										<form role="form" action="edit" method="post"
 											enctype="multipart/form-data">
 											<div class="form-group">
-												<label>User Name:</label> <input class="form-control"
-													value="${user.username }" name="username" />
+												<label>Name:</label> <input class="form-control"
+													value="${product.name }" name="name" />
 											</div>
 											<div class="form-group">
-												<label>Password</label> <input class="form-control"
-													value="${user.password }" type="password" name="password" />
+												<label>Price ($)</label> <input class="form-control"
+													value="${product.price }" type="number" name="price" />
 											</div>
+
 											<div class="form-group">
-												<label>Email:</label> <input class="form-control"
-													value="${user.email }" name="email" />
-											</div>
-											<div class="form-group">
-												<label>Role</label>
+												<label>Category</label>
 												<div class="checkbox">
-													<label> <input type="radio" value="1" name="role" />Admin
-													</label> <br> <label> <input type="radio" value="2"
-														name="role" />Client
-													</label>
+													<select name="cate">
+														<c:forEach items="${categories}" var="c">
+															<option value="${c.id}">${c.name}</option>
+														</c:forEach>
+													</select>
 												</div>
 
 											</div>
-
 											<div class="form-group">
-												<label>Choose Avatar</label> <input type="file"
-													name="avatar" />
+												<label>image</label> <input type="file" name="image" />
 											</div>
 											<button type="submit" class="btn btn-default">Edit</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form>
-
 
 
 									</div>

@@ -37,7 +37,7 @@ public class ProductAddController extends HttpServlet {
 
 		req.setAttribute("categories", categories);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/product/add-product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/add-product.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -53,19 +53,18 @@ public class ProductAddController extends HttpServlet {
 			for (FileItem item : items) {
 				if (item.getFieldName().equals("name")) {
 					product.setName(item.getString());
-				} else if (item.getFieldName().equals("cate")) {
-					product.setCategory(categoryService.get(item.getString()));
+				} else if (item.getFieldName().equals("category")) {
+					product.setCategory(categoryService.get(Integer.parseInt(item.getString())));
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
 				} else if (item.getFieldName().equals("image")) {
-					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
+					final String dir = "F:\\upload";
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);
 					String fileName = System.currentTimeMillis() + "." + ext;
 					File file = new File(dir + "/" + fileName);
 					item.write(file);
-
 					product.setImage(fileName);
 				}
 			}

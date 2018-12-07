@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./">
+                    <a class="navbar-brand" href="${pageContext.request.contextPath }">
                         <img id="logo-header" src="${url}/img/logo.png" alt="Logo">
                     </a>
                 </div>
@@ -32,11 +32,11 @@
                                 Pages
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="index.html">Shop UI</a></li>
-                                <li><a href="shop-ui-inner.html">Product Page</a></li>
+                                <li><a href="${pageContext.request.contextPath }">Index</a></li>
+                                <li><a href="${pageContext.request.contextPath }/product/list">Product Page</a></li>
                                 <li><a href="shop-ui-filter-grid.html">Filter Grid Page</a></li>
                                 <li><a href="shop-ui-filter-list.html">Filter List Page</a></li>
-                                <li><a href="shop-ui-add-to-cart.html">Checkout</a></li>
+                                <li><a href="${pageContext.request.contextPath }/member/cart">Checkout</a></li>
                                 <li><a href="${pageContext.request.contextPath }/login">Login</a></li>
                                 <li class="active"><a href="${pageContext.request.contextPath }/register">Register</a></li>
                             </ul>

@@ -15,6 +15,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public void insert(User user) {
+		int roleId=0;
 		String sql = "INSERT INTO [User](email, username, password,avatar,role_id) VALUES (?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 
@@ -24,7 +25,18 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 			ps.setString(2, user.getUsername());
 			ps.setString(3, user.getPassword());
 			ps.setString(4, user.getAvatar());
-			ps.setInt(5, 2);;
+			try {
+				if(user.getRoleId()==1) {
+					roleId=1;
+				}else {
+					roleId=2;
+				}
+
+			} catch (Exception e) {
+				roleId=2;
+			}
+			ps.setInt(5, roleId);
+			;
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -33,7 +45,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 	@Override
 	public void edit(User user) {
-		String sql = "UPDATE [User] SET email = ? , username = ?, password = ?,avatar = ?, role_id=? WHERE id = ?";
+		String sql = "UPDATE [User] SET email = ? , username = ?, password = ?, avatar = ?, role_id = ? WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -85,7 +97,6 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 				user.setPassword(rs.getString("password"));
 				user.setAvatar(rs.getString("avatar"));
 				user.setRoleId(Integer.parseInt(rs.getString("role_id")));
-				
 
 				return user;
 
@@ -96,7 +107,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public User get(int id) {
 		String sql = "SELECT * FROM [User] WHERE id = ? ";
@@ -126,7 +137,6 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 		}
 		return null;
 	}
-
 
 	@Override
 	public List<User> getAll() {
@@ -190,50 +200,49 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
 		return userList;
 	}
-	public boolean checkExistEmail(String email){
-        boolean duplicate = false;
-        Connection conn = JDBCConnection.getJDBCConnection();
-        try {  
-            String query = "select * from [user] where email = ?";
 
-            PreparedStatement psmt = conn.prepareStatement(query);
+	public boolean checkExistEmail(String email) {
+		boolean duplicate = false;
+		Connection conn = JDBCConnection.getJDBCConnection();
+		try {
+			String query = "select * from [user] where email = ?";
 
-            psmt.setString(1, email);
+			PreparedStatement psmt = conn.prepareStatement(query);
 
-            ResultSet resultSet = psmt.executeQuery();
+			psmt.setString(1, email);
 
+			ResultSet resultSet = psmt.executeQuery();
 
-            if(resultSet.next()){
-               duplicate = true;
-            }
-            psmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-    }
-    return duplicate;
-}
+			if (resultSet.next()) {
+				duplicate = true;
+			}
+			psmt.close();
+			conn.close();
+		} catch (SQLException ex) {
+		}
+		return duplicate;
+	}
 
-public boolean checkExistUsername(String username){
-    boolean duplicate = false;
-    Connection conn = JDBCConnection.getJDBCConnection();
-    try {  
-        String query = "select * from [User] where username = ?";
+	public boolean checkExistUsername(String username) {
+		boolean duplicate = false;
+		Connection conn = JDBCConnection.getJDBCConnection();
+		try {
+			String query = "select * from [User] where username = ?";
 
-        PreparedStatement psmt = conn.prepareStatement(query);
+			PreparedStatement psmt = conn.prepareStatement(query);
 
-        psmt.setString(1, username);
+			psmt.setString(1, username);
 
-        ResultSet resultSet = psmt.executeQuery();
+			ResultSet resultSet = psmt.executeQuery();
 
-
-        if(resultSet.next()){
-           duplicate = true;
-        }
-        psmt.close();
-        conn.close();
-    } catch (SQLException ex) {
-    }
- return duplicate;
-}
+			if (resultSet.next()) {
+				duplicate = true;
+			}
+			psmt.close();
+			conn.close();
+		} catch (SQLException ex) {
+		}
+		return duplicate;
+	}
 
 }

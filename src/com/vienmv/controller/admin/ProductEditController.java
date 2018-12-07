@@ -41,12 +41,13 @@ public class ProductEditController extends HttpServlet {
 
 		req.setAttribute("product", product);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/product/edit-product.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/view/admin/view/edit-product.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Product p=(Product) req.getAttribute("product");
 
 		Product product = new Product();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -54,17 +55,16 @@ public class ProductEditController extends HttpServlet {
 
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
+			product.setId(p.getId());
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("id")) {
-					product.setId(Integer.parseInt(item.getString()));
-				} else if (item.getFieldName().equals("name")) {
+				 if (item.getFieldName().equals("name")) {
 					product.setName(item.getString());
 				} else if (item.getFieldName().equals("cate")) {
 					product.setCategory(categoryService.get(item.getString()));
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
 				} else if (item.getFieldName().equals("image")) {
-					final String dir = "C:\\Users\\mai vien\\eclipse-workspace\\UNIFY\\upload";
+					final String dir = "F:\\upload";
 					String originalFileName = item.getName();
 					int index = originalFileName.lastIndexOf(".");
 					String ext = originalFileName.substring(index + 1);
@@ -74,7 +74,8 @@ public class ProductEditController extends HttpServlet {
 
 					product.setImage(fileName);
 					} else {
-						product.setImage(null);
+						
+						product.setImage(p.getImage());
 					}
 				}
 			

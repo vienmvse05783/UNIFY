@@ -54,28 +54,37 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
-												<th>Rendering engine</th>
-												<th>Browser</th>
-												<th>Platform(s)</th>
-												<th>Engine version</th>
-												<th>CSS grade</th>
+												<th>ID </th>
+												<th>Image</th>
+												<th>Name</th>
+												<th>Price($)</th>
+												<th>Category</th>
+												<th>Action </th>
 											</tr>
 										</thead>
 										<tbody>
+										<c:forEach items="${proList }" var="pro" >
 											<tr class="odd gradeX">
-												<td>Trident</td>
-												<td>Internet Explorer 4.0</td>
-												<td>Win 95+</td>
-												<td class="center">4</td>
-												<td class="center">X</td>
+												<td>${pro.id }</td>
+													<c:url value="/image?fname=${pro.image }" var="imgUrl"></c:url>
+													<td><img height="150" width="200" src="${imgUrl}" /></td>
+
+													<td>${pro.name }</td>
+												<td>${pro.price }</td>
+												<td>${pro.category.name }</td>
+												<td><a
+														href="<c:url value='/product/detail?id=${pro.id }'/>"
+														class="center">Detail</a> | <a
+														href="<c:url value='/admin/product/edit?id=${pro.id }'/>"
+														class="center">Edit</a>
+														| <a
+														href="<c:url value='/admin/product/delete?id=${pro.id }'/>"
+														class="center">Delete</a></td>
+												
 											</tr>
-											<tr class="gradeU">
-												<td>Other browsers</td>
-												<td>All others</td>
-												<td>-</td>
-												<td class="center">-</td>
-												<td class="center">U</td>
-											</tr>
+											</c:forEach>
+											
+											
 										</tbody>
 									</table>
 								</div>
