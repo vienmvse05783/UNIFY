@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
 		if (newProduct.getImage() != null) {
 			// XOA ANH CU DI
 			String fileName = oldProduct.getImage();
-			final String dir = "D:\\Project\\Java web\\temp";
+			final String dir = "F:\\upload";
 			File file = new File(dir + "/" + fileName);
 			if (file.exists()) {
 				file.delete();

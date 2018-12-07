@@ -46,6 +46,7 @@
 										<c:url value="/admin/user/edit" var="edit"></c:url>
 										<form role="form" action="${edit }" method="post"
 											enctype="multipart/form-data">
+											<input name="id" value="${user.id }" type="text" hidden="">
 											<div class="form-group">
 												<label>User Name:</label> <input class="form-control"
 													value="${user.username }" name="username" />
@@ -63,7 +64,7 @@
 												<div class="checkbox">
 													<label> <input type="radio" value="1" name="role" />Admin
 													</label> <br> <label> <input type="radio" value="2"
-														name="role" />Client
+														name="role" checked="checked"/>Client
 													</label>
 												</div>
 

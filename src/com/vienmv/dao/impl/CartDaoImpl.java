@@ -33,9 +33,9 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ResultSet generatedKeys = ps.getGeneratedKeys();
 			ps.setInt(1, cart.getBuyer().getId());
 			ps.setDate(2, new Date(cart.getBuyDate().getTime()));
-			ResultSet generatedKeys = ps.getGeneratedKeys();
 			if (generatedKeys.next()) {
 				int id = generatedKeys.getInt(1);
 				cart.setId(id);// set id vao doi tuong cart

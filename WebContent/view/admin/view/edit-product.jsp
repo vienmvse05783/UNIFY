@@ -43,9 +43,10 @@
 								<div class="row">
 									<div class="col-md-6">
 										<h3>User:</h3>
-
-										<form role="form" action="edit" method="post"
+										<c:url value="/admin/product/edit" var="edit"></c:url>
+										<form role="form" action="${edit }" method="post"
 											enctype="multipart/form-data">
+											<input name="id" value="${product.id }" hidden="">
 											<div class="form-group">
 												<label>Name:</label> <input class="form-control"
 													value="${product.name }" name="name" />
@@ -64,14 +65,14 @@
 												<div class="checkbox">
 													<select name="cate">
 														<c:forEach items="${categories}" var="c">
-															<option value="${c.id}">${c.name}</option>
+															<option value="${c.name}">${c.name}</option>
 														</c:forEach>
 													</select>
 												</div>
 
 											</div>
 											<div class="form-group">
-												<label>image</label> <input type="file" name="image" />
+												<label>image</label> <input type="file" name="image" value="${product.image }" />
 											</div>
 											<button type="submit" class="btn btn-default">Edit</button>
 											<button type="reset" class="btn btn-primary">Reset</button>

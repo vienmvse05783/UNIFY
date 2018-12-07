@@ -12,6 +12,8 @@ public interface CategoryDao {
 	void delete(int id);
 
 	Category get(int id);
+	
+	Category get(String name);
 
 	List<Category> getAll();
 

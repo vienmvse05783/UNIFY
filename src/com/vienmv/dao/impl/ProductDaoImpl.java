@@ -39,13 +39,13 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public void edit(Product product) {
-		String sql = "UPDATE Product SET name = ? , price = ?, image = ?,cate_id, des=? = ? WHERE id = ?";
+		String sql = "UPDATE Product SET Product.name = ? , price = ?, image = ?,cate_id=?, des=?  WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, product.getName());
-			ps.setLong(2, product.getPrice());
+			ps.setDouble(2, product.getPrice());;
 			ps.setString(3, product.getImage());
 			ps.setInt(4, product.getCategory().getId());
 			ps.setString(5, product.getDes());

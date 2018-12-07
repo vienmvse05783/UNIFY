@@ -38,23 +38,27 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	
 	@Override
 	public void insert(CartItem cartItem) {
-		String sql = "INSERT INTO cart_item(id_cart, id_product, quantity, unit_price) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO CartItem(id,cat_id, pro_id, quantity, unitPrice) VALUES (?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ps.setInt(1, cartItem.getCart().getId());
-			ps.setInt(2, cartItem.getProduct().getId());
-			ps.setInt(3, cartItem.getQuantity());
-			ps.setLong(4, cartItem.getUnitPrice());
-			ResultSet generatedKeys = ps.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				int id = generatedKeys.getInt(1);
-				cartItem.setId(id);// set id vao doi tuong cart
-			}
+
+			ps.setInt(1, 123172737);
+			ps.setInt(2, cartItem.getCart().getId());
+			ps.setInt(3, cartItem.getProduct().getId());
+			ps.setInt(4, cartItem.getQuantity());
+			ps.setLong(5, cartItem.getUnitPrice());
+
 			ps.executeUpdate();
 
-			// Lay ID set ve
+//			ResultSet generatedKeys = ps.getGeneratedKeys();
+//			if (generatedKeys.next()) {
+//				int id = generatedKeys.getInt(1);
+//				cartItem.setId(id);
+//			}
+			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,11 +66,12 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
 	@Override
 	public void edit(CartItem cartItem) {
-		String sql = "UPDATE cart_item SET id_cart = ?, id_product = ?, quantity = ?, unit_price=? WHERE id = ?";
+		String sql = "UPDATE CartItem SET cat_id = ?, pro_id = ?, quantity = ?, unitPrice=? WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
 			ps.setInt(1, cartItem.getCart().getId());
 			ps.setInt(2, cartItem.getProduct().getId());
 			ps.setInt(3, cartItem.getQuantity());
@@ -76,6 +81,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 				int id = generatedKeys.getInt(1);
 				cartItem.setId(id);// set id vao doi tuong cart
 			}
+			
 			ps.executeUpdate();
 
 			// Lay ID set ve
@@ -86,7 +92,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM cart_item WHERE id = ?";
+		String sql = "DELETE FROM CartItem WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -102,19 +108,19 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	@Override
 	public CartItem get(int id) {
 		String sql = "SELECT " + 
-				"cart_item.id, " + 
-				"cart_item.quantity, " + 
-				"cart_item.unit_price, " + 
-				"cart.id_user, " + 
-				"cart.buy_date, " + 
+				"CartItem.id, " + 
+				"CartItem.quantity, " + 
+				"CartItem.unitPrice, " + 
+				"cart.u_id, " + 
+				"cart.buyDate, " + 
 				"product.name, " + 
 				"product.price " + 
-				"FROM cart_item " + 
-				"INNER JOIN cart " + 
-				"ON cart_item.id_cart = cart.id " + 
-				"INNER JOIN product " + 
-				"ON cart_item.id_product = product.id " +
-				"WHERE cart_item.id = ?";
+				"FROM CartItem " + 
+				"INNER JOIN Cart " + 
+				"ON CartItem.cart_id = cart.id " + 
+				"INNER JOIN Product " + 
+				"ON CartItem.pro_id = Product.id " +
+				"WHERE CartItem.id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -123,11 +129,11 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				User user = userDao.get(rs.getInt("id_user"));
+				User user = userDao.get(rs.getInt("u_id"));
 				
 				Cart cart = new Cart();
 				cart.setBuyer(user);
-				cart.setBuyDate(rs.getDate("buy_date"));
+				cart.setBuyDate(rs.getDate("buyDate"));
 				
 				Product product = new Product();
 				product.setName(rs.getString("name"));
@@ -137,7 +143,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 				cartItem.setCart(cart);
 				cartItem.setProduct(product);
 				cartItem.setQuantity(rs.getInt("quantity"));
-				cartItem.setUnitPrice(rs.getLong("unit_price"));
+				cartItem.setUnitPrice(rs.getLong("unitPrice"));
 				
 				
 				return cartItem;
@@ -153,18 +159,18 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	public List<CartItem> getAll() {
 		List<CartItem> cartItemList = new ArrayList<CartItem>();
 		String sql = "SELECT " + 
-				"cart_item.id, " + 
-				"cart_item.quantity, " + 
-				"cart_item.unit_price, " + 
-				"cart.id_user, " + 
-				"cart.buy_date, " + 
+				"CartItem.id, " + 
+				"CartItem.quantity, " + 
+				"CartItem.unitPrice, " + 
+				"cart.u_id, " + 
+				"cart.buyDate, " + 
 				"product.name, " + 
 				"product.price " + 
-				"FROM cart_item " + 
-				"INNER JOIN cart " + 
-				"ON cart_item.id_cart = cart.id " + 
-				"INNER JOIN product " + 
-				"ON cart_item.id_product = product.id ";
+				"FROM CartItem " + 
+				"INNER JOIN Cart " + 
+				"ON CartItem.cart_id = cart.id " + 
+				"INNER JOIN Product " + 
+				"ON CartItem.pro_id = Product.id ";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -172,11 +178,11 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				User user = userDao.get(rs.getInt("id_user"));
+				User user = userDao.get(rs.getInt("u_id"));
 				
 				Cart cart = new Cart();
 				cart.setBuyer(user);
-				cart.setBuyDate(rs.getDate("buy_date"));
+				cart.setBuyDate(rs.getDate("buyDate"));
 				
 				Product product = new Product();
 				product.setName(rs.getString("name"));
@@ -186,7 +192,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 				cartItem.setCart(cart);
 				cartItem.setProduct(product);
 				cartItem.setQuantity(rs.getInt("quantity"));
-				cartItem.setUnitPrice(rs.getLong("unit_price"));
+				cartItem.setUnitPrice(rs.getLong("unitPrice"));
 
 				cartItemList.add(cartItem);
 

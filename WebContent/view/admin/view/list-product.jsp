@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>All User</title>
+<title>Product Management</title>
 <!-- BOOTSTRAP STYLES-->
 <link href="${url}/css/bootstrap.css" rel="stylesheet" />
 <!-- FONTAWESOME STYLES-->
@@ -35,8 +35,8 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Table Examples</h2>
-						<h5>Welcome Jhon Deo , Love to see you back.</h5>
+						<h2>All Product</h2>
+						<h5>You can management product in here</h5>
 
 					</div>
 				</div>

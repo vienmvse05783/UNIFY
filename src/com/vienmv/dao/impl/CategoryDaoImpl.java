@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.vienmv.dao.CategoryDao;
 import com.vienmv.jdbc.JDBCConnection;
 import com.vienmv.model.Category;
@@ -57,7 +58,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public Category get(int id) {
 		String sql = "SELECT * FROM category WHERE cate_id = ? ";
@@ -82,7 +83,6 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 		}
 		return null;
 	}
-
 
 	@Override
 	public List<Category> getAll() {
@@ -137,4 +137,29 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 		return categories;
 	}
 
+	@Override
+	public Category get(String name) {
+		String sql = "SELECT * FROM Category WHERE cate_name = ? ";
+		Connection con = super.getJDBCConnection();
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Category category = new Category();
+
+				category.setId(rs.getInt("cate_id"));
+				category.setName(rs.getString("cate_name"));
+
+				return category;
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

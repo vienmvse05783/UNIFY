@@ -322,11 +322,18 @@
 
 					<div class="filter-results">
 						<div class="row illustration-v2 margin-bottom-30">
+						
+						
+						
+						
+						<c:forEach items="${productList }" var="p" >						
+							<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
+							
 							<div class="col-md-4">
 								<div class="product-img product-img-brd">
-									<a href="#"><img class="full-width img-responsive"
-										src="${url}/img/blog/16.jpg" alt=""></a> <a
-										class="product-review" href="shop-ui-inner.html">Quick
+									<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img class="full-width img-responsive"
+										src="${p.image}" alt=""></a> <a
+										class="product-review" href="${pageContext.request.contextPath }/product/detail?id=${p.id}">Quick
 										review</a> <a class="add-to-cart" href="#"><i
 										class="fa fa-shopping-cart"></i>Add to cart</a>
 									<div class="shop-rgba-dark-green rgba-banner">New</div>
@@ -336,14 +343,14 @@
 									<div class="overflow-h margin-bottom-5">
 										<div class="pull-left">
 											<h4 class="title-price">
-												<a href="shop-ui-inner.html">Double-breasted</a>
+												<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}">Double-breasted</a>
 											</h4>
 											<span class="gender text-uppercase">Men</span> <span
 												class="gender">Suits - Blazers</span>
 										</div>
 										<div class="product-price">
-											<span class="title-price">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
+											<span class="title-price">$ ${p.price }.0</span> <span
+												class="title-price line-through">$ ${p.price *1.25 }</span>
 										</div>
 									</div>
 									<ul class="list-inline product-ratings">
@@ -359,78 +366,11 @@
 									</ul>
 								</div>
 							</div>
-							<div class="col-md-4">
-								<div class="product-img product-img-brd">
-									<a href="#"><img class="full-width img-responsive"
-										src="${url}/img/blog/17.jpg" alt=""></a> <a
-										class="product-review" href="shop-ui-inner.html">Quick
-										review</a> <a class="add-to-cart" href="#"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div
-									class="product-description product-description-brd margin-bottom-30">
-									<div class="overflow-h margin-bottom-5">
-										<div class="pull-left">
-											<h4 class="title-price">
-												<a href="shop-ui-inner.html">Double-breasted</a>
-											</h4>
-											<span class="gender text-uppercase">Men</span> <span
-												class="gender">Suits - Blazers</span>
-										</div>
-										<div class="product-price">
-											<span class="title-price">$60.00</span> <span
-												class="title-price line-through">$95.00</span>
-										</div>
-									</div>
-									<ul class="list-inline product-ratings">
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating fa fa-star"></i></li>
-										<li><i class="rating fa fa-star"></i></li>
-										<li class="like-icon"><a
-											data-original-title="Add to wishlist" data-toggle="tooltip"
-											data-placement="left" class="tooltips" href="#"><i
-												class="fa fa-heart"></i></a></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="product-img product-img-brd">
-									<a href="#"><img class="full-width img-responsive"
-										src="${url}/img/blog/18.jpg" alt=""></a> <a
-										class="product-review" href="shop-ui-inner.html">Quick
-										review</a> <a class="add-to-cart" href="#"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-								<div
-									class="product-description product-description-brd margin-bottom-30">
-									<div class="overflow-h margin-bottom-5">
-										<div class="pull-left">
-											<h4 class="title-price">
-												<a href="shop-ui-inner.html">Double-breasted</a>
-											</h4>
-											<span class="gender text-uppercase">Men</span> <span
-												class="gender">Suits - Blazers</span>
-										</div>
-										<div class="product-price">
-											<span class="title-price">$95.00</span>
-										</div>
-									</div>
-									<ul class="list-inline product-ratings">
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating-selected fa fa-star"></i></li>
-										<li><i class="rating fa fa-star"></i></li>
-										<li><i class="rating fa fa-star"></i></li>
-										<li class="like-icon"><a
-											data-original-title="Add to wishlist" data-toggle="tooltip"
-											data-placement="left" class="tooltips" href="#"><i
-												class="fa fa-heart"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+							
+							
+							</c:forEach>
+							
+							
 
 						<div class="row illustration-v2 margin-bottom-30">
 							<div class="col-md-4">

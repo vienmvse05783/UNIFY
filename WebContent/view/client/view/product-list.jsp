@@ -339,7 +339,7 @@
 									<div class="overflow-h margin-bottom-5">
 										<ul class="list-inline overflow-h">
 											<li><h4 class="title-price">
-													<a href="shop-ui-inner.html">${p.name }</a>
+													<a href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">${p.name }</a>
 													
 												</h4></li>
 											<li><span class="gender text-uppercase">${p.category.name }</span></li>
@@ -362,9 +362,9 @@
 										
 										<ul class="list-inline add-to-wishlist margin-bottom-20">
 											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-												href="#">Add to Wishlist</a></li>
+												href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add to Wishlist</a></li>
 											<li class="compare-in"><i class="fa fa-exchange"></i> <a
-												href="#">Add to Compare</a></li>
+												href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add to Compare</a></li>
 										</ul>
 										<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}" ><button type="button" class="btn-u btn-u-sea-shop">Add
 											to Cart</button></a>

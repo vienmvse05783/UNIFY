@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 		oldUser.setEmail(newUser.getEmail());
 		oldUser.setUsername(newUser.getUsername());
 		oldUser.setPassword(newUser.getPassword());
+		oldUser.setRoleId(newUser.getRoleId());
 		if (newUser.getAvatar() != null) {
 			// XOA ANH CU DI
 			String fileName = oldUser.getAvatar();

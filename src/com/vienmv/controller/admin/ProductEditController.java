@@ -47,7 +47,6 @@ public class ProductEditController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Product p=(Product) req.getAttribute("product");
 
 		Product product = new Product();
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
@@ -55,33 +54,38 @@ public class ProductEditController extends HttpServlet {
 
 		try {
 			List<FileItem> items = servletFileUpload.parseRequest(req);
-			product.setId(p.getId());
+
 			for (FileItem item : items) {
-				 if (item.getFieldName().equals("name")) {
+				if (item.getFieldName().equals("id")) {
+					product.setId(Integer.parseInt(item.getString()));
+				} else if (item.getFieldName().equals("name")) {
 					product.setName(item.getString());
+					;
 				} else if (item.getFieldName().equals("cate")) {
 					product.setCategory(categoryService.get(item.getString()));
 				} else if (item.getFieldName().equals("des")) {
-					product.setDes(item.getString());;
+					product.setDes(item.getString());
+					;
 				} else if (item.getFieldName().equals("price")) {
 					product.setPrice(Long.parseLong(item.getString()));
 				} else if (item.getFieldName().equals("image")) {
-					final String dir = "F:\\upload";
-					String originalFileName = item.getName();
-					int index = originalFileName.lastIndexOf(".");
-					String ext = originalFileName.substring(index + 1);
-					String fileName = System.currentTimeMillis() + "." + ext;
-					File file = new File(dir + "/" + fileName);
-					item.write(file);
+					if (item.getSize() > 0) {// neu co file d
+						final String dir = "F:\\upload";
+						String originalFileName = item.getName();
+						int index = originalFileName.lastIndexOf(".");
+						String ext = originalFileName.substring(index + 1);
+						String fileName = System.currentTimeMillis() + "." + ext;
+						File file = new File(dir + "/" + fileName);
+						item.write(file);
 
-					product.setImage(fileName);
+						product.setImage(fileName);
+
 					} else {
-						
-						product.setImage(p.getImage());
+
+						product.setImage(null);
 					}
 				}
-			
-
+			}
 			productService.edit(product);
 
 			resp.sendRedirect(req.getContextPath() + "/admin/product/list");

@@ -39,7 +39,7 @@
 							Cart</a>
 					</div>
 					<div class="col-xs-6">
-						<a href="shop-ui-add-to-cart.html"
+						<a href="${pageContext.request.contextPath}/member/order"
 							class="btn-u btn-u-sea-shop btn-block">Checkout</a>
 					</div>
 				</div>

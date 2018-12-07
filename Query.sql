@@ -21,12 +21,13 @@ create table Category(
 	cate_id int identity primary key,
 	cate_name nvarchar(255) not null,
 )
+
 create table Product(
 	id int identity primary key,
 	[name] nvarchar(255) not null,
 	price float ,
 	cate_id int references Category(cate_id) not null,
-	des varchar(200),
+	des varchar(2000),
 	image varchar(50),
 )
 

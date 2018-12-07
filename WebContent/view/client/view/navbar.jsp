@@ -34,9 +34,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="${pageContext.request.contextPath }">Index</a></li>
                                 <li><a href="${pageContext.request.contextPath }/product/list">Product Page</a></li>
-                                <li><a href="shop-ui-filter-grid.html">Filter Grid Page</a></li>
-                                <li><a href="shop-ui-filter-list.html">Filter List Page</a></li>
-                                <li><a href="${pageContext.request.contextPath }/member/cart">Checkout</a></li>
+                                <li><a href="${pageContext.request.contextPath }/product/list">Filter Grid Page</a></li>
+                                <li><a href="${pageContext.request.contextPath }/member/cart">Cart</a></li>
+                                <li><a href="${pageContext.request.contextPath }/member/order">Checkout</a></li>
                                 <li><a href="${pageContext.request.contextPath }/login">Login</a></li>
                                 <li class="active"><a href="${pageContext.request.contextPath }/register">Register</a></li>
                             </ul>
