@@ -25,16 +25,16 @@ import com.vienmv.service.UserService;
 import com.vienmv.service.impl.CartServiceImpl;
 import com.vienmv.service.impl.CartServiceItemImpl;
 import com.vienmv.service.impl.UserServiceImpl;
+import com.vienmv.tools.SendMail;
 import com.vienmv.util.RandomUUID;
-@WebServlet(urlPatterns= {"/member/order"})
+
+@WebServlet(urlPatterns = {"/member/order" })
 public class OrderController extends ClientBaseController {
 	UserService userService = new UserServiceImpl();
 	CartService cartService = new CartServiceImpl();
 	CartItemService cartItemService = new CartServiceItemImpl();
 	long time = System.currentTimeMillis();
-	
 
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
@@ -46,24 +46,25 @@ public class OrderController extends ClientBaseController {
 		cart.setId(RandomUUID.getRandomID());
 		cartService.insert(cart);
 
-		
 		Object objCart = session.getAttribute("cart");
 		if (objCart != null) {
-		//ep ve dung kieu cua no khi them vao o phan them vao gio hang controller
-		Map<Integer, CartItem> map = (Map<Integer, CartItem>) objCart;
+			// ep ve dung kieu cua no khi them vao o phan them vao gio hang controller
+			Map<Integer, CartItem> map = (Map<Integer, CartItem>) objCart;
 
-		for (CartItem cartItem: map.values()) {
-			cartItem.setCart(cart);
-			cartItem.setId(RandomUUID.getRandomID());
-			cartItemService.insert(cartItem);
-		}
+			for (CartItem cartItem : map.values()) {
+				cartItem.setCart(cart);
+				cartItem.setId(RandomUUID.getRandomID());
+				cartItemService.insert(cartItem);
+				SendMail sm = new SendMail();
+				sm.sendMail(cart.getBuyer().getEmail(), "UNIFY", "Payment success. We will contact you soon ! ");
+			}
 
 		}
 		session.removeAttribute("cart");
-		resp.sendRedirect(req.getContextPath()+"/home");
+		resp.sendRedirect(req.getContextPath() + "/home");
 
-	
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

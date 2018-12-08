@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="<c:url value="/ckeditor/ckeditor.js" />"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Edit User</title>
@@ -57,7 +58,7 @@
 											</div>
 											<div class="form-group">
 												<label>Description </label> <br>
-												<textarea rows="4" cols="50" name="des">${product.des }</textarea>
+												<textarea rows="4" cols="50" name="des" id="editer" >${product.des }</textarea>
 											</div>
 
 											<div class="form-group">
@@ -106,6 +107,8 @@
 	<script src="${url}/js/jquery.metisMenu.js"></script>
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${url}/js/custom.js"></script>
-
+<script type="text/javascript" language="javascript">
+   CKEDITOR.replace('editer', {width: '700px',height: '300px'});
+</script>
 </body>
 </html>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.vienmv.service.UserService;
 import com.vienmv.service.impl.UserServiceImpl;
+import com.vienmv.tools.SendMail;
 import com.vienmv.util.Constant;
 
 @WebServlet(urlPatterns = "/register")
@@ -66,6 +67,8 @@ public class RegisterController extends HttpServlet {
 		boolean isSuccess = service.register(username, password, email);
 
 		if (isSuccess) {
+			SendMail sm= new SendMail();
+			sm.sendMail(email, "UNIFY", "Welcome to UNIFY. Please Login to use service. Thanks !");
 			req.setAttribute("alert", alertMsg);
 			resp.sendRedirect(req.getContextPath() + "/login");
 		} else {
