@@ -1,3 +1,6 @@
+drop table CartItem
+drop table Cart
+
 use master
 go
 drop database UNIFY
@@ -7,8 +10,7 @@ create database UNIFY
 go
 use UNIFY
 go
-drop table CartItem
-drop table Cart
+
 
 create table [User](
 	id int identity,
@@ -33,19 +35,17 @@ create table Product(
 	image varchar(50),
 )
 
-drop table CartItem
-drop table Cart
 
 create table Cart(
-	id varchar(32) primary key,
+	id varchar(50) primary key,
 	u_id int references [User](id) not null ,
 	buyDate date
 )
 create table CartItem(
-	id varchar(32) primary key,
+	id varchar(50) primary key,
 	quantity int,
 	unitPrice float,
 	pro_id int references Product(id) not null,
-	cat_id varchar(32) references Cart(id) not null
+	cat_id varchar(50) references Cart(id) not null
 )
 

@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Order Management</h2>
-						
+
 
 					</div>
 				</div>
@@ -54,23 +54,28 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
+												<th>index</th>
 												<th>ID</th>
 												<th>Buyer</th>
 												<th>Email</th>
 												<th>Date</th>
 												<th>Product</th>
 												<th>Quantity</th>
-												<th>Price </th>
+												<th>Price</th>
 												<th>Sum</th>
 												<th>Status</th>
 												<th>Action</th>
-												
+
 
 											</tr>
 										</thead>
 										<tbody>
+											</a>
+											<c:set var="index" value="${0}" />
 											<c:forEach items="${listCartItem }" var="list">
 												<tr class="odd gradeX">
+													<c:set var="index" value="${index + 1}" />
+													<td>${index }</td>
 													<td>${list.id }</td>
 													<td>${list.cart.buyer.username }</td>
 													<td>${list.cart.buyer.email }</td>
