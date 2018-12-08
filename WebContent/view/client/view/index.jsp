@@ -314,7 +314,7 @@
 			<div class="row margin-bottom-50">
 				<div class="col-md-4 md-margin-bottom-30">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img1" href="#"> <span
+						<a class="illustration-v3 illustration-img1" href="${pageContext.request.contextPath }/product/category?cate_id=1"> <span
 							class="illustration-bg"> <span class="illustration-ads">
 									<span class="illustration-v3-category"> <span
 										class="product-category">Men</span> <span
@@ -327,7 +327,7 @@
 				</div>
 				<div class="col-md-4 md-margin-bottom-30">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img2" href="#"> <span
+						<a class="illustration-v3 illustration-img2" href="${pageContext.request.contextPath }/product/category?cate_id=2"> <span
 							class="illustration-bg"> <span class="illustration-ads">
 									<span class="illustration-v3-category"> <span
 										class="product-category">Women</span> <span
@@ -340,7 +340,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img3" href="#"> <span
+						<a class="illustration-v3 illustration-img3" href="${pageContext.request.contextPath }/product/category?cate_id=3"> <span
 							class="illustration-bg"> <span class="illustration-ads">
 									<span class="illustration-v3-category"> <span
 										class="product-category">Children</span> <span

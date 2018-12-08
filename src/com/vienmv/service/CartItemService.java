@@ -10,7 +10,7 @@ public interface CartItemService {
 
 	void edit(CartItem cartItem);
 
-	void delete(int id);
+	void delete(String id);
 
 	CartItem get(int id);
 	

@@ -25,5 +25,9 @@ public class WellcomeController extends HttpServlet {
 		req.setAttribute("productList", productList);
 		req.getRequestDispatcher("/view/client/view/index.jsp").forward(req, resp);
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 
 }

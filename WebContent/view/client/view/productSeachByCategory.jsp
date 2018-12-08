@@ -276,8 +276,7 @@
 				<div class="col-md-9">
 					<div class="row margin-bottom-5">
 						<div class="col-sm-4 result-category">
-							<h2>Men</h2>
-							<small class="shop-bg-red badge-results">45 Results</small>
+
 						</div>
 						<div class="col-sm-8">
 							<ul class="list-inline clear-both">
@@ -319,7 +318,7 @@
 						</div>
 					</div>
 					<!--/end result category-->
-					<c:forEach items="${productList }" var="p" >
+					<c:forEach items="${productSeachByCategory }" var="p" >
 
 					<div class="filter-results">
 					

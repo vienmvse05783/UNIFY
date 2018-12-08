@@ -64,4 +64,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDao.search(product);
 	}
 
+	@Override
+	public List<Product> seachByCategory(int cate_id) {
+		return productDao.seachByCategory(cate_id);
+	}
+
 }

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 
 import com.vienmv.model.User;
-
+@WebFilter(urlPatterns="/member/*")
 public class MemberSecurity implements Filter {
 
 	@Override
@@ -30,13 +30,13 @@ public class MemberSecurity implements Filter {
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse resq= (HttpServletResponse) response;
 		HttpSession session = req.getSession();
-		Object obj=session.getAttribute("username");
+		Object obj=session.getAttribute("account");
 		User user=(User) obj;
 		if(obj!=null ) {
 			chain.doFilter(request, response);
 			return; //
 		}else {
-			resq.sendRedirect("/dang-nhap");
+			resq.sendRedirect(req.getContextPath());
 		}
 		
 	}

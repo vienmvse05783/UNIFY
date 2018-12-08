@@ -11,7 +11,7 @@ public interface CartItemDao {
 
 	void edit(CartItem cartItem);
 
-	void delete(int id);
+	void delete(String id);
 
 	CartItem get(String name);
 

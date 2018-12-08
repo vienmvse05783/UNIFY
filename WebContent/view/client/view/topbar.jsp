@@ -48,7 +48,7 @@
 				<c:otherwise>
 					<div class="col-sm-6">
 						<ul class="list-inline right-topbar pull-right">
-							<li><a href="#">My Account</a> | <a
+							<li><a href="${pageContext.request.contextPath }/member/myaccount">My Account</a> | <a
 								href="${pageContext.request.contextPath }/logout">Logout</a></li>
 							<li><i class="search fa fa-search search-button"></i></li>
 						</ul>

@@ -88,13 +88,13 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String id) {
 		String sql = "DELETE FROM CartItem WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setString(1, id);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

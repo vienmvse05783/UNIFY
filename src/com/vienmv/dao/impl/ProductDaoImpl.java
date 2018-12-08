@@ -45,7 +45,8 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, product.getName());
-			ps.setDouble(2, product.getPrice());;
+			ps.setDouble(2, product.getPrice());
+			;
 			ps.setString(3, product.getImage());
 			ps.setInt(4, product.getCategory().getId());
 			ps.setString(5, product.getDes());
@@ -164,6 +165,39 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 				product.setCategory(category);
 
+				productList.add(product);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return productList;
+	}
+
+	@Override
+	public List<Product> seachByCategory(int cate_id) {
+		List<Product> productList = new ArrayList<Product>();
+		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				 FROM Product , Category   where product.cate_id = category.cate_id and Category.cate_id=?";
+		Connection conn = super.getJDBCConnection();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, cate_id);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Category category = categortService.get(rs.getInt("c_id"));
+				Product product = new Product();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("p_name"));
+				product.setPrice(rs.getLong("price"));
+				product.setImage(rs.getString("image"));
+				product.setDes(rs.getString("des"));
+				product.setCategory(category);
+
+				product.setCategory(category);
 				productList.add(product);
 			}
 

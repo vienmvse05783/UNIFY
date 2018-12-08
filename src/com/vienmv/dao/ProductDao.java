@@ -16,4 +16,6 @@ public interface ProductDao {
 	List<Product> getAll();
 
 	List<Product> search(String username);
+	
+	List<Product> seachByCategory(int cate_id);
 }
