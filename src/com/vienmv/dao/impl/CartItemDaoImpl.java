@@ -42,7 +42,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 		Connection con = super.getJDBCConnection();
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, cartItem.getId());
 			ps.setString(2, cartItem.getCart().getId());
@@ -70,18 +70,18 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 		Connection con = super.getJDBCConnection();
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps = con.prepareStatement(sql);
 			
 			ps.setString(1, cartItem.getCart().getId());
 			ps.setInt(2, cartItem.getProduct().getId());
 			ps.setInt(3, cartItem.getQuantity());
 			ps.setLong(4, cartItem.getUnitPrice());
-			ResultSet generatedKeys = ps.getGeneratedKeys();
+			ps.setString(5, cartItem.getId());
 			
 			
 			ps.executeUpdate();
 
-			// Lay ID set ve
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -165,7 +165,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 				"product.price " + 
 				"FROM CartItem " + 
 				"INNER JOIN Cart " + 
-				"ON CartItem.cart_id = cart.id " + 
+				"ON CartItem.cat_id = Cart.id " + 
 				"INNER JOIN Product " + 
 				"ON CartItem.pro_id = Product.id ";
 		Connection con = super.getJDBCConnection();
@@ -186,6 +186,7 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 				product.setPrice(rs.getLong("price"));
 				
 				CartItem cartItem = new CartItem();
+				cartItem.setId(rs.getString("id"));
 				cartItem.setCart(cart);
 				cartItem.setProduct(product);
 				cartItem.setQuantity(rs.getInt("quantity"));

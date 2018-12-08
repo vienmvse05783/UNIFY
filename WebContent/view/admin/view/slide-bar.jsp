@@ -15,8 +15,8 @@
 							Product Management</a></li>
 					<li><a href="${pageContext.request.contextPath }/admin/user/list"><i class="fa fa-qrcode fa-3x"></i>
 							USER Management</a></li>
-					<li><a href="chart.html"><i
-							class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a></li>
+					<li><a href="${pageContext.request.contextPath }/admin/order/list"><i
+							class="fa fa-bar-chart-o fa-3x"></i> Order Management</a></li>
 					<li><a href="table.html"><i class="fa fa-table fa-3x"></i>
 							Table Examples</a></li>
 					<li><a href="form.html"><i class="fa fa-edit fa-3x"></i>
