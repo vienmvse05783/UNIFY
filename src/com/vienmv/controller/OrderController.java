@@ -1,9 +1,11 @@
 package com.vienmv.controller;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,12 +25,15 @@ import com.vienmv.service.UserService;
 import com.vienmv.service.impl.CartServiceImpl;
 import com.vienmv.service.impl.CartServiceItemImpl;
 import com.vienmv.service.impl.UserServiceImpl;
+import com.vienmv.util.RandomUUID;
 @WebServlet(urlPatterns= {"/member/order"})
 public class OrderController extends ClientBaseController {
 	UserService userService = new UserServiceImpl();
 	CartService cartService = new CartServiceImpl();
 	CartItemService cartItemService = new CartServiceItemImpl();
 	long time = System.currentTimeMillis();
+	
+
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +43,7 @@ public class OrderController extends ClientBaseController {
 		Cart cart = new Cart();
 		cart.setBuyer(buyer);
 		cart.setBuyDate(new java.sql.Date(time));
+		cart.setId(RandomUUID.getRandomID());
 		cartService.insert(cart);
 
 		
@@ -47,8 +53,9 @@ public class OrderController extends ClientBaseController {
 		Map<Integer, CartItem> map = (Map<Integer, CartItem>) objCart;
 
 		for (CartItem cartItem: map.values()) {
-		cartItem.setCart(cart);
-		cartItemService.insert(cartItem);
+			cartItem.setCart(cart);
+			cartItem.setId(RandomUUID.getRandomID());
+			cartItemService.insert(cartItem);
 		}
 
 		}

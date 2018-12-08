@@ -38,14 +38,14 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 	
 	@Override
 	public void insert(CartItem cartItem) {
-		String sql = "INSERT INTO CartItem(id,cat_id, pro_id, quantity, unitPrice) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO CartItem(id, cat_id, pro_id, quantity, unitPrice) VALUES (?,?,?,?,?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-			ps.setInt(1, 123172737);
-			ps.setInt(2, cartItem.getCart().getId());
+			ps.setString(1, cartItem.getId());
+			ps.setString(2, cartItem.getCart().getId());
 			ps.setInt(3, cartItem.getProduct().getId());
 			ps.setInt(4, cartItem.getQuantity());
 			ps.setLong(5, cartItem.getUnitPrice());
@@ -72,15 +72,12 @@ public class CartItemDaoImpl extends JDBCConnection implements CartItemDao {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			
-			ps.setInt(1, cartItem.getCart().getId());
+			ps.setString(1, cartItem.getCart().getId());
 			ps.setInt(2, cartItem.getProduct().getId());
 			ps.setInt(3, cartItem.getQuantity());
 			ps.setLong(4, cartItem.getUnitPrice());
 			ResultSet generatedKeys = ps.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				int id = generatedKeys.getInt(1);
-				cartItem.setId(id);// set id vao doi tuong cart
-			}
+			
 			
 			ps.executeUpdate();
 

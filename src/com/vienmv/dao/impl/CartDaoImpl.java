@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
 
 import com.vienmv.dao.CartDao;
 import com.vienmv.dao.CategoryDao;
@@ -28,21 +29,16 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
 	@Override
 	public void insert(Cart cart) {
-		String sql = "INSERT INTO cart(id_user, buy_date) VALUES (?,?)";
+		String sql = "INSERT INTO Cart(id,u_id, buyDate) VALUES (?,?,?)";
 		Connection con = super.getJDBCConnection();
 
 		try {
-			PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ResultSet generatedKeys = ps.getGeneratedKeys();
-			ps.setInt(1, cart.getBuyer().getId());
-			ps.setDate(2, new Date(cart.getBuyDate().getTime()));
-			if (generatedKeys.next()) {
-				int id = generatedKeys.getInt(1);
-				cart.setId(id);// set id vao doi tuong cart
-			}
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, cart.getId());
+			ps.setInt(2, cart.getBuyer().getId());
+			ps.setDate(3, new Date(cart.getBuyDate().getTime()));
 			ps.executeUpdate();
-
-			// Lay ID set ve
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -50,14 +46,14 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
 	@Override
 	public void edit(Cart cart) {
-		String sql = "UPDATE cart SET id_user = ?, buy_date = ? WHERE id = ?";
+		String sql = "UPDATE cart SET id_user = ?, buyDate = ? WHERE id = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, cart.getBuyer().getId());
 			ps.setDate(2, new Date(cart.getBuyDate().getTime()));
-			ps.setInt(3, cart.getId());
+			ps.setString(3, cart.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -82,7 +78,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
 	@Override
 	public Cart get(int id) {
-		String sql = "SELECT cart.id, cart.buy_date, user.name, user.username, user.id AS user_id "
+		String sql = "SELECT cart.id, cart.buyDate, User.email, user.username, user.id AS user_id "
 				+ "FROM cart INNER JOIN user " + "ON cart.id_user = user.id WHERE cart.id=?";
 		Connection con = super.getJDBCConnection();
 
@@ -95,8 +91,8 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 				User user = userS.get(rs.getInt("user_id"));
 
 				Cart cart = new Cart();
-				cart.setId(rs.getInt("id"));
-				cart.setBuyDate(rs.getDate("buy_date"));
+				cart.setId(rs.getString("id"));
+				cart.setBuyDate(rs.getDate("buyDate"));
 				cart.setBuyer(user);
 
 				return cart;
@@ -112,7 +108,7 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 	@Override
 	public List<Cart> getAll() {
 		List<Cart> cartList = new ArrayList<Cart>();
-		String sql = "SELECT cart.id, cart.buy_date, user.name, user.username, user.id AS user_id "
+		String sql = "SELECT cart.id, cart.buyDate, User.email, user.username, user.id AS user_id "
 				+ "FROM cart INNER JOIN user " + "ON cart.id_user = user.id";
 		Connection con = super.getJDBCConnection();
 
@@ -124,8 +120,8 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 				User user = userS.get(rs.getInt("user_id"));
 
 				Cart cart = new Cart();
-				cart.setId(rs.getInt("id"));
-				cart.setBuyDate(rs.getDate("buy_date"));
+				cart.setId(rs.getString("id"));
+				cart.setBuyDate(rs.getDate("buyDate"));
 				cart.setBuyer(user);
 
 				cartList.add(cart);
@@ -140,8 +136,8 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 
 	public List<Cart> search(String name) {
 		List<Cart> cartList = new ArrayList<Cart>();
-		String sql = "SELECT cart.id, cart.buy_date, user.name, user.username, user.id AS user_id "
-				+ "FROM cart INNER JOIN user " + "ON cart.id_user = user.id LIKE user.name = ?";
+		String sql = "SELECT cart.id, cart.buyDate, User.email, user.username, user.id AS user_id "
+				+ "FROM cart INNER JOIN user " + "ON cart.id_user = user.id LIKE User.email = ?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -152,8 +148,8 @@ public class CartDaoImpl extends JDBCConnection implements CartDao {
 				User user = userS.get(rs.getInt("user_id"));
 
 				Cart cart = new Cart();
-				cart.setId(rs.getInt("id"));
-				cart.setBuyDate(rs.getDate("buy_date"));
+				cart.setId(rs.getString("id"));
+				cart.setBuyDate(rs.getDate("buyDate"));
 				cart.setBuyer(user);
 
 				cartList.add(cart);

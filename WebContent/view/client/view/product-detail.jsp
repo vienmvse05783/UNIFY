@@ -157,7 +157,7 @@
 
 							<form name="f1" class="product-quantity sm-margin-bottom-20"
 								method="get" action="<c:url value="/member/cart/add"></c:url>">
-								<input type="text" value="${product.id }" name="pId">
+								<input type="text" value="${product.id }" name="pId" hidden="">
 								<button type='button' class="quantity-button" name='subtract'
 									onclick='javascript: subtractQty();' value='-'>-</button>
 								<input type='text' class="quantity-field" name='quantity'
