@@ -60,7 +60,7 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 
 	@Override
 	public void delete(int id) {
-		String sql = "DELETE FROM Product WHERE id = ?";
+		String sql = "DELETE FROM Product WHERE id=?";
 		Connection con = super.getJDBCConnection();
 
 		try {
@@ -185,6 +185,40 @@ public class ProductDaoImpl extends JDBCConnection implements ProductDao {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, cate_id);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Category category = categortService.get(rs.getInt("c_id"));
+				Product product = new Product();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("p_name"));
+				product.setPrice(rs.getLong("price"));
+				product.setImage(rs.getString("image"));
+				product.setDes(rs.getString("des"));
+				product.setCategory(category);
+
+				product.setCategory(category);
+				productList.add(product);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return productList;
+	}
+
+	@Override
+	public List<Product> seachByName(String productName) {
+		List<Product> productList = new ArrayList<Product>();
+		String sql = "SELECT product.id, product.name AS p_name, product.price, product.image, product.des , category.cate_name AS c_name, category.cate_id AS c_id 				"
+				+ " FROM Product , Category   where product.cate_id = category.cate_id and Product.name like ? ";
+		Connection conn = super.getJDBCConnection();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1,"%"+ productName +"%");
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {

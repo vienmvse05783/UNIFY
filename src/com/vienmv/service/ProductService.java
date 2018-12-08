@@ -18,4 +18,6 @@ public interface ProductService {
 	List<Product> search(String username);
 	
 	List<Product> seachByCategory(int cate_id);
+	
+	List<Product> seachByName(String productName);
 }

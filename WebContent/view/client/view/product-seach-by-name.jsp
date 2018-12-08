@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
 		<!--=== Breadcrumbs v4 ===-->
 		<div class="breadcrumbs-v4">
 			<div class="container">
-				<span class="page-name">Product Page</span>
+				<span class="page-name">Product  Page</span>
 				<h1>
 					Maecenas <span class="shop-green">enim</span> sapien
 				</h1>
@@ -83,8 +83,7 @@
 				<div class="col-md-9">
 					<div class="row margin-bottom-5">
 						<div class="col-sm-4 result-category">
-							<h2>Men</h2>
-							<small class="shop-bg-red badge-results">45 Results</small>
+
 						</div>
 						<div class="col-sm-8">
 							<ul class="list-inline clear-both">
@@ -126,73 +125,65 @@
 						</div>
 					</div>
 					<!--/end result category-->
-					<c:forEach items="${productList }" var="p">
+					<c:forEach items="${productSeachByName }" var="p" >
 
-						<div class="filter-results">
-
-							<div
-								class="list-product-description product-description-brd margin-bottom-30">
-								<div class="row">
-
-									<div class="col-sm-4">
-										<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
-										<a
-											href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img
-											class="img-responsive sm-margin-bottom-20" src="${imgUrl}"
-											alt=""></a>
-									</div>
-									<div class="col-sm-8 product-description">
-
-
-										<div class="overflow-h margin-bottom-5">
-											<ul class="list-inline overflow-h">
-												<li><h4 class="title-price">
-														<a href=""
-															${pageContext.request.contextPath }/product/detail?id=${p.id}"">${p.name }</a>
-
-													</h4></li>
-												<li><span class="gender text-uppercase">${p.category.name }</span></li>
-												<li class="pull-right">
-													<ul class="list-inline product-ratings">
-														<li><i class="rating-selected fa fa-star"></i></li>
-														<li><i class="rating-selected fa fa-star"></i></li>
-														<li><i class="rating-selected fa fa-star"></i></li>
-														<li><i class="rating fa fa-star"></i></li>
-														<li><i class="rating fa fa-star"></i></li>
-													</ul>
-												</li>
-											</ul>
-											<div class="margin-bottom-10">
-												<span class="title-price margin-right-10">$ ${p.price }.0</span>
-												<span class="title-price line-through">$ ${p.price *1.25 }</span>
-
-											</div>
-											<p class="margin-bottom-20">${p.des }</p>
-
-											<ul class="list-inline add-to-wishlist margin-bottom-20">
-												<li class="wishlist-in"><i class="fa fa-heart"></i> <a
-													href=""
-													${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add
-														to Wishlist</a></li>
-												<li class="compare-in"><i class="fa fa-exchange"></i> <a
-													href=""
-													${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add
-														to Compare</a></li>
-											</ul>
-											<a
-												href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><button
-													type="button" class="btn-u btn-u-sea-shop">Add to
-													Cart</button></a>
-										</div>
-
-
-
-									</div>
+					<div class="filter-results">
+					
+						<div
+							class="list-product-description product-description-brd margin-bottom-30">
+							<div class="row">
+							
+								<div class="col-sm-4">
+								<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
+									<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img
+										class="img-responsive sm-margin-bottom-20"
+										src="${imgUrl}" alt=""></a>
 								</div>
-
+								<div class="col-sm-8 product-description">
+									
+									
+									<div class="overflow-h margin-bottom-5">
+										<ul class="list-inline overflow-h">
+											<li><h4 class="title-price">
+													<a href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">${p.name }</a>
+													
+												</h4></li>
+											<li><span class="gender text-uppercase">${p.category.name }</span></li>
+											<li class="pull-right">
+												<ul class="list-inline product-ratings">
+													<li><i class="rating-selected fa fa-star"></i></li>
+													<li><i class="rating-selected fa fa-star"></i></li>
+													<li><i class="rating-selected fa fa-star"></i></li>
+													<li><i class="rating fa fa-star"></i></li>
+													<li><i class="rating fa fa-star"></i></li>
+												</ul>
+											</li>
+										</ul>
+										<div class="margin-bottom-10">
+											<span class="title-price margin-right-10">$ ${p.price }.0</span> <span
+												class="title-price line-through">$ ${p.price *1.25 }</span>
+											
+										</div>
+										<p class="margin-bottom-20">${p.des }</p>
+										
+										<ul class="list-inline add-to-wishlist margin-bottom-20">
+											<li class="wishlist-in"><i class="fa fa-heart"></i> <a
+												href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add to Wishlist</a></li>
+											<li class="compare-in"><i class="fa fa-exchange"></i> <a
+												href=""${pageContext.request.contextPath }/product/detail?id=${p.id}"">Add to Compare</a></li>
+										</ul>
+										<a href="${pageContext.request.contextPath }/product/detail?id=${p.id}" ><button type="button" class="btn-u btn-u-sea-shop">Add
+											to Cart</button></a>
+									</div>
+									
+									
+									
+								</div>								
 							</div>
-
+							
 						</div>
+
+					</div>
 					</c:forEach>
 					<!--/end filter resilts-->
 

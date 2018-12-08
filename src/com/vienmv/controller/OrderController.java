@@ -28,7 +28,7 @@ import com.vienmv.service.impl.UserServiceImpl;
 import com.vienmv.tools.SendMail;
 import com.vienmv.util.RandomUUID;
 
-@WebServlet(urlPatterns = {"/member/order" })
+@WebServlet(urlPatterns = "/member/order")
 public class OrderController extends ClientBaseController {
 	UserService userService = new UserServiceImpl();
 	CartService cartService = new CartServiceImpl();
@@ -54,9 +54,10 @@ public class OrderController extends ClientBaseController {
 			for (CartItem cartItem : map.values()) {
 				cartItem.setCart(cart);
 				cartItem.setId(RandomUUID.getRandomID());
-				cartItemService.insert(cartItem);
 				SendMail sm = new SendMail();
 				sm.sendMail(cart.getBuyer().getEmail(), "UNIFY", "Payment success. We will contact you soon ! ");
+				cartItemService.insert(cartItem);
+				
 			}
 
 		}

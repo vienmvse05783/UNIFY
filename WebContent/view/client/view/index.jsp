@@ -39,21 +39,24 @@
 <link rel="stylesheet" href="${url}/css/custom.css">
 </head>
 <body>
-<!-- Subiz -->
-<script>
-(function(s, u, b, i, z){
-  u[i]=u[i]||function(){
-    u[i].t=+new Date();
-    (u[i].q=u[i].q||[]).push(arguments);
-  };
-  z=s.createElement('script');
-  var zz=s.getElementsByTagName('script')[0];
-  z.async=1; z.src=b; z.id='subiz-script';
-  zz.parentNode.insertBefore(z,zz);
-})(document, window, 'https://widgetv4.subiz.com/static/js/app.js', 'subiz');
-subiz('setAccount', 'acqetkhujxyunuatbxzw');
-</script>
-<!-- End Subiz -->
+	<!-- Subiz -->
+	<script>
+		(function(s, u, b, i, z) {
+			u[i] = u[i] || function() {
+				u[i].t = +new Date();
+				(u[i].q = u[i].q || []).push(arguments);
+			};
+			z = s.createElement('script');
+			var zz = s.getElementsByTagName('script')[0];
+			z.async = 1;
+			z.src = b;
+			z.id = 'subiz-script';
+			zz.parentNode.insertBefore(z, zz);
+		})(document, window, 'https://widgetv4.subiz.com/static/js/app.js',
+				'subiz');
+		subiz('setAccount', 'acqetkhujxyunuatbxzw');
+	</script>
+	<!-- End Subiz -->
 <body class="header-fixed">
 	<div class="wrapper">
 		<!--=== Header v5 ===-->
@@ -277,48 +280,36 @@ subiz('setAccount', 'acqetkhujxyunuatbxzw');
 
 				<ul class="list-inline owl-slider">
 
-					<c:forEach items="${productList }" var="p ">
+					<c:forEach items="${pwelcome }" var="p">
+					<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
 						<li class="item">
-							<div class="product-img">
-								<c:url value="/image?fname=${p.image }" var="imgUrl"></c:url>
-								<a
-									href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img
-									class="full-width img-responsive" src="${imgUrl}" alt=""></a>
-								<a class="product-review"
-									href="${pageContext.request.contextPath }/product/detail?id=${p.id}">Quick
-									review</a> <a class="add-to-cart" href="#"><i
-									class="fa fa-shopping-cart"></i>Add to cart</a>
-							</div>
-							<div class="product-description product-description-brd">
-								<div class="overflow-h margin-bottom-5">
-									<div class="pull-left">
-										<h4 class="title-price">
-											<a
-												href="${pageContext.request.contextPath }/product/detail?id=${p.id}">${p.name }</a>
-										</h4>
-
-										<span class="gender text-uppercase">${p.category.name }</span>
-										<span class="gender">Suits - Blazers</span>
-									</div>
-									<div class="product-price">
-										<span class="title-price">${p.price }</span>
-
-									</div>
-								</div>
-								<ul class="list-inline product-ratings">
-									<li><i class="rating-selected fa fa-star"></i></li>
-									<li><i class="rating-selected fa fa-star"></i></li>
-									<li><i class="rating-selected fa fa-star"></i></li>
-									<li><i class="rating fa fa-star"></i></li>
-									<li><i class="rating fa fa-star"></i></li>
-									<li class="like-icon"><a
-										data-original-title="Add to wishlist" data-toggle="tooltip"
-										data-placement="left" class="tooltips" href="#"><i
-											class="fa fa-heart"></i></a></li>
-								</ul>
-							</div>
-						</li>
-
+                    <div class="product-img">
+                        <a href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><img width="314" height="414"   src="${imgUrl }" alt=""></a>
+                        <a class="product-review" href="${pageContext.request.contextPath }/product/detail?id=${p.id}">Quick review</a>
+                        <a class="add-to-cart" href="${pageContext.request.contextPath }/product/detail?id=${p.id}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <div class="shop-rgba-red rgba-banner">Out of stock</div>
+                    </div> 
+                    <div class="product-description product-description-brd">
+                        <div class="overflow-h margin-bottom-5">
+                            <div class="pull-left">${p.name }</a></h4>
+                                <span class="gender text-uppercase">${p.category.name }</span>
+                                <span class="gender">best selling</span>
+                            </div>    
+                            <div class="product-price">
+                                <span class="title-price">$ ${p.price }</span>
+                               
+                            </div>
+                        </div>    
+                        <ul class="list-inline product-ratings">
+                            <li><i class="rating-selected fa fa-star"></i></li>
+                            <li><i class="rating-selected fa fa-star"></i></li>
+                            <li><i class="rating-selected fa fa-star"></i></li>
+                            <li><i class="rating fa fa-star"></i></li>
+                            <li><i class="rating fa fa-star"></i></li>
+                            <li class="like-icon"><a data-original-title="Add to wishlist" data-toggle="tooltip" data-placement="left" class="tooltips" href="#"><i class="fa fa-heart"></i></a></li>
+                        </ul>    
+                    </div>
+                </li>   
 					</c:forEach>
 				</ul>
 
@@ -329,9 +320,11 @@ subiz('setAccount', 'acqetkhujxyunuatbxzw');
 			<div class="row margin-bottom-50">
 				<div class="col-md-4 md-margin-bottom-30">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img1" href="${pageContext.request.contextPath }/product/category?cate_id=1"> <span
-							class="illustration-bg"> <span class="illustration-ads">
-									<span class="illustration-v3-category"> <span
+						<a class="illustration-v3 illustration-img1"
+							href="${pageContext.request.contextPath }/product/category?cate_id=1">
+							<span class="illustration-bg"> <span
+								class="illustration-ads"> <span
+									class="illustration-v3-category"> <span
 										class="product-category">Men</span> <span
 										class="product-amount">56 Items</span>
 								</span>
@@ -342,9 +335,11 @@ subiz('setAccount', 'acqetkhujxyunuatbxzw');
 				</div>
 				<div class="col-md-4 md-margin-bottom-30">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img2" href="${pageContext.request.contextPath }/product/category?cate_id=2"> <span
-							class="illustration-bg"> <span class="illustration-ads">
-									<span class="illustration-v3-category"> <span
+						<a class="illustration-v3 illustration-img2"
+							href="${pageContext.request.contextPath }/product/category?cate_id=2">
+							<span class="illustration-bg"> <span
+								class="illustration-ads"> <span
+									class="illustration-v3-category"> <span
 										class="product-category">Women</span> <span
 										class="product-amount">56 Items</span>
 								</span>
@@ -355,9 +350,11 @@ subiz('setAccount', 'acqetkhujxyunuatbxzw');
 				</div>
 				<div class="col-md-4">
 					<div class="overflow-h">
-						<a class="illustration-v3 illustration-img3" href="${pageContext.request.contextPath }/product/category?cate_id=3"> <span
-							class="illustration-bg"> <span class="illustration-ads">
-									<span class="illustration-v3-category"> <span
+						<a class="illustration-v3 illustration-img3"
+							href="${pageContext.request.contextPath }/product/category?cate_id=3">
+							<span class="illustration-bg"> <span
+								class="illustration-ads"> <span
+									class="illustration-v3-category"> <span
 										class="product-category">Children</span> <span
 										class="product-amount">56 Items</span>
 								</span>
