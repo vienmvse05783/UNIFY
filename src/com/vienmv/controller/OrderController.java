@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.vienmv.controller.client.ClientBaseController;
 import com.vienmv.model.Cart;
 import com.vienmv.model.User;
 import com.vienmv.model.CartItem;
@@ -29,7 +28,7 @@ import com.vienmv.tools.SendMail;
 import com.vienmv.util.RandomUUID;
 
 @WebServlet(urlPatterns = "/member/order")
-public class OrderController extends ClientBaseController {
+public class OrderController extends HttpServlet {
 	UserService userService = new UserServiceImpl();
 	CartService cartService = new CartServiceImpl();
 	CartItemService cartItemService = new CartServiceItemImpl();

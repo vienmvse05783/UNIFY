@@ -32,11 +32,12 @@ public class SecurityFilter implements Filter {
 		HttpSession session = req.getSession();
 		Object obj=session.getAttribute("account");
 		User user=(User) obj;
-		if(user.getRoleId()==1 ) {
+		
+		if(user !=null && user.getRoleId()==1 ) {
 			chain.doFilter(request, response);
 			return; //
 		}else {
-			resq.sendRedirect(req.getContextPath()+ "/login");
+			resq.sendRedirect(req.getContextPath()+ "/logout");
 		}
 	}
 

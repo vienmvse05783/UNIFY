@@ -36,7 +36,7 @@ public class MemberSecurity implements Filter {
 			chain.doFilter(request, response);
 			return; //
 		}else {
-			resq.sendRedirect(req.getContextPath());
+			resq.sendRedirect(req.getContextPath()+"/login");
 		}
 		
 	}
