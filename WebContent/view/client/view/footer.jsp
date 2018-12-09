@@ -143,8 +143,8 @@
 			<div class="row">
 				<div class="col-md-6">
 					<p>
-						2014 &copy; Unify. ALL Rights Reserved. <a target="_blank"
-							href="https://twitter.com/htmlstream">Htmlstream</a> | <a
+						2018 &copy; Development by vienmv <a target="_blank"
+							href="https://www.facebook.com/vienmv.th">Htmlstream</a> | <a
 							href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
 					</p>
 				</div>
